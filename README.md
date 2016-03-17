@@ -1,7 +1,7 @@
 Shcoderdojo
 ================
 
-This is the Github repository for the Safety Harbor CoderDojo. For information about attending a session or to find out more about the CoderDojo please visit <www.shcoderdojo.com> or <www.coderdojo.com>.
+This is the Github repository for the Safety Harbor CoderDojo. For information about attending a session or to find out more about the CoderDojo please visit <http://www.shcoderdojo.com> or <http://www.coderdojo.com>.
 
 Problems? Issues?
 -----------
