@@ -28,4 +28,4 @@ development:
   better_errors: 
   pry: 
   rvmrc: 
-  dashboard: upmin
+  dashboard: administrate
