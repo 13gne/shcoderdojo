@@ -1,6 +1,10 @@
 <div class="authform">
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
     <h3>Sign up</h3>
+    <div class="alert alert-info">
+      <strong>Please note:</strong>
+      Only sign up for an account if you are 13 years old or older. If you are not, please have your parent or guardian sign up for you.
+    </div>
     <%= devise_error_messages! %>
     <div class="form-group">
       <%= f.label :name %>
