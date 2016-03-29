@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
 
   has_many :students
   has_many :course_registrations
+
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
 end
