@@ -21,7 +21,7 @@
 
 
  .bg {
-   background: url('slider_2.jpg') no-repeat center center;
+   background: asset-url('slider_2.jpg') no-repeat center center;
    background-size: 100% auto;
    position: fixed;
    width: 100%;
@@ -50,7 +50,7 @@
 {
 
     width: 124px;
-    background-image: url('logo_rect.png');
+    background-image: asset-url('logo_rect.png');
     background-repeat: no-repeat;
     background-position: 50%;
 }
