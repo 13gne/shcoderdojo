@@ -11,8 +11,7 @@
       <%= f.text_field :username, :autofocus => true, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.input :name, label: "Student's name" %>
     </div>
     <div class="form-group">
       <%= f.label :email %>
@@ -37,7 +36,7 @@
       <%= f.input :experience, collection: ["Beginner","Intermediate","Advanced"], as: :radio_buttons %>
     </div>
     <div class="form-group">
-      <%= f.input :mobile_number, as: :tel %>
+      <%= f.input :mobile_number, as: :tel, label: "Mobile number (gives us the ability to txt changes in schedule)" %>
     </div>
      <%= f.submit 'Sign up', :class => 'button right' %>
   <% end %>

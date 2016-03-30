@@ -10,7 +10,6 @@
       <th>End date</th>
       <th>Description</th>
       <th>Max students</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -22,14 +21,9 @@
         <td><%= course.end_date %></td>
         <td><%= course.description %></td>
         <td><%= course.max_students %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Course', new_course_path %>
