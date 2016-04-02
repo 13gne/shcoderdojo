@@ -20,25 +20,16 @@
  @import "modern-business";
 
 
- .bg {
-   background: asset-url('slider_2.jpg') no-repeat center center;
-   background-size: 100% auto;
-   position: fixed;
-   width: 100%;
-   height: 650px; /*same height as jumbotron */
-   top:0;
-   left:0;
-   z-index: -1;
- }
+
 
  .jumbotron {
-   height: 650px;
-   color: #139F4C;
-   text-shadow: #444 0 1px 1px;
-   background:transparent;
-   top:150px;
-   text-align: center;
- }
+    position: relative;
+    background: #000 url("slider_2.jpg") center center;
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    overflow: hidden;
+}
 
  #main {
    margin-top:0px;
@@ -49,8 +40,8 @@
  .navbar-brand
 {
 
-    width: 124px;
-    background-image: asset-url('logo_rect.png');
+    width: 128px;
+    background-image: asset-url('logo_rect_nav.png');
     background-repeat: no-repeat;
     background-position: 50%;
 }
