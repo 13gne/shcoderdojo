@@ -1,29 +1,58 @@
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Courses
+        <small>Safety Harbor CoderDojo</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to "Courses", courses_path %> </li>
+        <li class="active"><%= @course.name %> Sessions</li>
+      </ol>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <!-- Intro Content -->
+  <div class="row">
+    <div class="col-md-12">
+
+      <table class="table table-fixed">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @sessions.each do |session| %>
+            <tr>
+              <td><%= session.session_date.strftime("%-m/%-e/%Y %l:%M%P") %> - <%= session.end_time.strftime("%l:%M%P") %></td>
+              <td><%= simple_format(session.notes) %></td>
+
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+
+
+</div>
+<!-- /.container -->
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @course.start_date %>
-</p>
 
-<p>
-  <strong>End date:</strong>
-  <%= @course.end_date %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
 
-<p>
-  <strong>Max students:</strong>
-  <%= @course.max_students %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<br>

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  resources :sessions
   namespace :admin do
     resources :users
     resources :courses
     resources :course_registrations
     resources :students
-
+    resources :sessions
     root to: "users#index"
   end
 

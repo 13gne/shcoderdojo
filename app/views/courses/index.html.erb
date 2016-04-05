@@ -1,29 +1,63 @@
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Courses
+        <small>Safety Harbor CoderDojo</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><%= link_to 'Home', root_path %>
+        </li>
+        <li class="active">Courses</li>
+      </ol>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <!-- Intro Content -->
+  <div class="row">
+    <div class="col-md-12">
+
+      <table class="table table-fixed">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Description</th>
+            <th>Max students</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @courses.each do |course| %>
+            <tr>
+              <td><%= link_to course.name, course_path(course.id) %></td>
+              <td><%= course.start_date %></td>
+              <td><%= course.end_date %></td>
+              <td><%= course.description %></td>
+              <td><%= course.max_students %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+
+
+</div>
+<!-- /.container -->
+
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Courses</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Description</th>
-      <th>Max students</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.name %></td>
-        <td><%= course.start_date %></td>
-        <td><%= course.end_date %></td>
-        <td><%= course.description %></td>
-        <td><%= course.max_students %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
 
 <br>
