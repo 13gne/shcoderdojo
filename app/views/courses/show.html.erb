@@ -31,8 +31,8 @@
         <tbody>
           <% @sessions.each do |session| %>
             <tr>
-              <td><%= session.session_date.strftime("%-m/%-e/%Y %l:%M%P") %> - <%= session.end_time.strftime("%l:%M%P") %></td>
-              <td><%= simple_format(session.notes) %></td>
+              <td><%= session.session_date.strftime("%-m/%-e/%Y") %> <br /> <%= session.session_date.strftime("%l:%M%P") %></td>
+              <td><%= sanitize(session.notes) %></td>
 
             </tr>
           <% end %>
