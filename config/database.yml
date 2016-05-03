@@ -46,7 +46,7 @@ test:
   encoding: unicode
   database: shcoderdojo_test
   pool:     5
-  username: shcoderdojo
+  username: jayannsd
   password:
   template: template0
 
