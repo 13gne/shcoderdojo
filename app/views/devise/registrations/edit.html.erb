@@ -2,26 +2,32 @@
   <h3>My Profile</h3>
   <% @course_registrations = current_user.course_registrations %>
 
-  <div class="authform form">
+  <div class="well">
     <h4>Session Registrations</h4>
-    <table class="table table-fixed">
-      <thead>
-        <tr>
-          <th>Course</th>
-          <th>&nbsp;</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @course_registrations.each do |course_registration| %>
+    <% if @course_registrations.count > 0 %>
+      <table class="table table-fixed">
+        <thead>
           <tr>
-            <td><%= link_to course_registration.course.name, course_path(course_registration.course) %></td>
-            <td><%= link_to 'Unregister', course_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <th>Course</th>
+            <th>&nbsp;</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
 
+        <tbody>
+          <% @course_registrations.each do |course_registration| %>
+            <tr>
+              <td><%= link_to course_registration.course.name, course_path(course_registration.course) %></td>
+              <td><%= link_to 'Unregister', course_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div>
+        You have no registrations, check out <%= link_to "Sessions", courses_path %> to sign up!
+      </div>
+
+    <% end %>
   </div>
   <div class="clearfix">
 
