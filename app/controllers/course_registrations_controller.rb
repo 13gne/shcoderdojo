@@ -1,10 +1,11 @@
 class CourseRegistrationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_course_registration, only: [:show, :edit, :update, :destroy]
 
   # GET /course_registrations
   # GET /course_registrations.json
   def index
-    @course_registrations = CourseRegistration.all
+    @course_registrations = current_user.course_registrations.all
   end
 
   # GET /course_registrations/1
@@ -14,7 +15,9 @@ class CourseRegistrationsController < ApplicationController
 
   # GET /course_registrations/new
   def new
-    @course_registration = CourseRegistration.new
+    @course_registration = current_user.course_registrations.new
+    @course = Course.find(params[:course_id])
+    @course_registration.course_id = @course.id
   end
 
   # GET /course_registrations/1/edit
@@ -28,7 +31,7 @@ class CourseRegistrationsController < ApplicationController
 
     respond_to do |format|
       if @course_registration.save
-        format.html { redirect_to @course_registration, notice: 'Course registration was successfully created.' }
+        format.html { redirect_to course_registrations_path, notice: 'Course registration was successfully created.' }
         format.json { render :show, status: :created, location: @course_registration }
       else
         format.html { render :new }

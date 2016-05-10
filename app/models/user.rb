@@ -21,4 +21,13 @@ class User < ActiveRecord::Base
   def email_changed?
     false
   end
+
+  def course_registered(course_id)
+    c = CourseRegistration.where(user_id: self.id, course_id: course_id)
+    if c.count == 0
+      false
+    else
+      true
+    end
+  end
 end

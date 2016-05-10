@@ -27,7 +27,7 @@
             <th>Start date</th>
             <th>End date</th>
             <th>Description</th>
-            <th>Max students</th>
+            <th>&nbsp;</th>
           </tr>
         </thead>
 
@@ -38,7 +38,17 @@
               <td><%= course.start_date %></td>
               <td><%= course.end_date %></td>
               <td><%= course.description %></td>
-              <td><%= course.max_students %></td>
+              <td>
+                <% if user_signed_in? %>
+                  <% if current_user.course_registered(course.id) %>
+                    Already Registered
+                  <% else %>
+                    <%= link_to "Register for this course", new_course_registration_path(course_id: course.id) %>
+                  <% end %>
+                <% else %>
+                  <%= link_to "Create an account to register", new_user_registration_path %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
