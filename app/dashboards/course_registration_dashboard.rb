@@ -23,7 +23,6 @@ class CourseRegistrationDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :user,
-    :student,
     :course,
     :id,
   ]
@@ -32,7 +31,6 @@ class CourseRegistrationDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :user,
-    :student,
     :course,
     :id,
     :created_at,

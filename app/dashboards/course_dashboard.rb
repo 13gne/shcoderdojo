@@ -63,4 +63,7 @@ class CourseDashboard < Administrate::BaseDashboard
   # def display_resource(course)
   #   "Course ##{course.id}"
   # end
+  def display_resource(course)
+    "#{course.name}"
+  end
 end
