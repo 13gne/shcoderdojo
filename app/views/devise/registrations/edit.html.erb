@@ -1,6 +1,33 @@
 <div class="authform">
-  <h3>Edit <%= resource_name.to_s.humanize %></h3>
+  <h3>My Profile</h3>
+  <% @course_registrations = current_user.course_registrations %>
+
+  <div class="authform form">
+    <h4>Session Registrations</h4>
+    <table class="table table-fixed">
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @course_registrations.each do |course_registration| %>
+          <tr>
+            <td><%= link_to course_registration.course.name, course_path(course_registration.course) %></td>
+            <td><%= link_to 'Unregister', course_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="clearfix">
+
+  </div>
   <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
+    <h4>Account Information</h4>
     <%= devise_error_messages! %>
     <div class="form-group">
       <%= f.label :username %>
