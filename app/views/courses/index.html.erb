@@ -46,7 +46,7 @@
                     <%= link_to "Register for this course", new_course_registration_path(course_id: course.id) %>
                   <% end %>
                 <% else %>
-                  <%= link_to "Create an account to register", new_user_registration_path %>
+                  <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %> to register
                 <% end %>
               </td>
             </tr>
