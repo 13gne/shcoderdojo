@@ -4,13 +4,13 @@
   <!-- Page Heading/Breadcrumbs -->
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Courses
+      <h1 class="page-header">Sessions
         <small>Safety Harbor CoderDojo</small>
       </h1>
       <ol class="breadcrumb">
         <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to "Courses", courses_path %> </li>
-        <li class="active"><%= @course.name %> Sessions</li>
+        <li><%= link_to "Sessions", courses_path %> </li>
+        <li class="active"><%= @course.name %> Meetings</li>
       </ol>
     </div>
   </div>
@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-md-12">
 
-      <table class="table table-fixed">
+      <table class="table table-fixed table-bordered table-striped table-hover">
         <thead>
           <tr>
             <th>Date</th>

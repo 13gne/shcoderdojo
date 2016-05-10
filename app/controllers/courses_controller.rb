@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @sessions = @course.sessions
+    @sessions = @course.sessions.order(:session_date)
   end
 
   # GET /courses/new
