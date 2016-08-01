@@ -35,8 +35,8 @@
           <% @courses.each do |course| %>
             <tr>
               <td><%= link_to course.name, course_path(course.id) %></td>
-              <td><%= course.start_date.strftime("%-m/%-e/%Y") %></td>
-              <td><%= course.end_date.strftime("%-m/%-e/%Y") %></td>
+              <td><%= course.start_date.strftime("%-m/%-e/%Y") unless course.start_date.nil? %></td>
+              <td><%= course.end_date.strftime("%-m/%-e/%Y") unless course.end_date.nil? %></td>
               <td><%= course.description %></td>
               <td>
                 <% if user_signed_in? %>
