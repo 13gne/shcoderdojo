@@ -1,0 +1,81 @@
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Resources
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li.active Resources
+  .row
+    .col-lg-12
+      %h2.page-header Coding Activity Resources
+
+  .row.match-my-cols
+    .col-md-3.col-sm6
+      .panel.panel-default.text-center
+        .panel-heading
+          = link_to "http://coderdojo.com" do
+            = image_tag "coderdojo_logo", class: 'img-responsive'
+        .panel-body
+          %p
+            #{link_to "CoderDojo.com", "http://coderdojo.com"} lists everything from tutorials and teaching concepts to partner
+            resources and e-books. Really great curriculum and projects that can be led by any CoderDojo volunteer.
+          = link_to "Learn More", "http://coderdojo.com", class: 'btn btn-info'
+
+    .col-md-3.col-sm6
+      .panel.panel-default.text-center
+        .panel-heading
+          = link_to "http://code.org" do
+            = image_tag "code_org_logo", class: 'img-responsive'
+        .panel-body
+          %p
+            #{link_to "Code.org", "http://code.org"} is a non-profit dedicated to expanding access to computer science, and
+            increasing participation by women and underrepresented students of color.
+          = link_to "Learn More", "http://code.org", class: 'btn btn-info'
+
+    .col-md-3.col-sm6
+      .panel.panel-default.text-center
+        .panel-heading
+          = link_to "https://www.cs-first.com/materials" do
+            = image_tag "google-cs-first", class: 'img-responsive'
+        .panel-body
+          %p
+            CS First provides free curriculum targeted at students ages 9-14. These activities can be tailored to fit your schedule
+            and needs and involve block-based coding using Scratch. Lessons are themed to attract students with varied interests and
+            Champions can also order a set of stickers, student passports, and other materials for free from Google to use with their club.
+          = link_to "Learn More", "https://www.cs-first.com/materials", class: 'btn btn-info'
+
+    .col-md-3.col-sm6
+      .panel.panel-default.text-center
+        .panel-heading
+          = link_to "http://scratch.mit.edu" do
+            = image_tag "scratch_logo", class: 'img-responsive'
+        .panel-body
+          %p
+            Using Scratch, students program their own interactive stories, games, and animations. The platform is targeted at youth from
+            8-18 but can be enjoyed by all ages!
+          = link_to "Learn More", "http://scratch.mit.edu", class: 'btn btn-info'
+
+  .row.match-my-cols
+    .col-md-3.col-sm6
+      .panel.panel-default.text-center
+        .panel-heading
+          = link_to "https://www.codecademy.com/" do
+            = image_tag "codeacademy_logo", class: 'img-responsive'
+        .panel-body
+          %p
+            More suitable for older students or students with a desire to learn the fundamentals of a specific coding language, Codecademy
+            provides a series of free courses in HTML, CSS, Ruby on Rails, SQL and more.
+          = link_to "Learn More", "https://www.codecademy.com/", class: 'btn btn-info'
+
+    .col-md-3.col-sm6
+      .panel.panel-default.text-center
+        .panel-heading
+          = link_to "https://www.raspberrypi.org/resources/" do
+            = image_tag "raspi_logo", class: 'img-responsive'
+        .panel-body
+          %p
+            The Raspberry Pi Foundation has developed a long list of activities that are specifically designed for use with Raspberry Pis -
+            credit card sized computers that are fantastic additions to any coding club!
+          = link_to "Learn More", "https://www.raspberrypi.org/resources/", class: 'btn btn-info'
