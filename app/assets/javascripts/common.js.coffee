@@ -1,2 +1,2 @@
 $ ->
-  $('.panel').matchHeight
+  $('.panel').matchHeight()
