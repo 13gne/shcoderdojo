@@ -1,10 +1,7 @@
-/ Header Carousel
 .bg
 .jumbotron
   = image_tag "logo_vert_lg.png"
-/ Page Content
 #main.container
-  / Marketing Icons Section
   .row
     .col-lg-12
       %h1.page-header
@@ -25,13 +22,10 @@
         page for our current schedule.
     .col-md-3
       = image_tag "home_img_01.png", class: "img-circle img-responsive"
-  / /.row
   %hr/
-  / Call to Action Section
   .well
     .row
       .col-md-8
         %p Interested in signing up? Click the Sign Up button to create an account and we'll let you know when the next course starts.
       .col-md-4
         = link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-default btn-block"
-/ /.container
