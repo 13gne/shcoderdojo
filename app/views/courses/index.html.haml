@@ -1,0 +1,43 @@
+/ Page Content
+.container
+  / Page Heading/Breadcrumbs
+  .row
+    .col-lg-12
+      %h1.page-header
+        Sessions
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li
+          = link_to 'Home', root_path
+        %li.active Sessions
+  / /.row
+  / Intro Content
+  .row
+    .col-md-12
+      %table.table.table-fixed
+        %thead
+          %tr
+            %th Name
+            %th Start date
+            %th End date
+            %th Description
+            %th  
+        %tbody
+          - @courses.each do |course|
+            %tr
+              %td= link_to course.name, course_path(course.id)
+              %td= course.start_date.strftime("%-m/%-e/%Y") unless course.start_date.nil?
+              %td= course.end_date.strftime("%-m/%-e/%Y") unless course.end_date.nil?
+              %td= course.description
+              %td
+                - if user_signed_in?
+                  - if current_user.course_registered(course.id)
+                    Already Registered
+                  - else
+                    = link_to "Register for this course", new_course_registration_path(course_id: course.id)
+                - else
+                  = link_to "Sign up", new_user_registration_path
+                  or #{link_to "Sign in", new_user_session_path} to register
+  / /.row
+/ /.container
+%br/

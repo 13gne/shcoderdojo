@@ -1,0 +1,62 @@
+.authform
+  %h3 My Profile
+  - @course_registrations = current_user.course_registrations
+  .well
+    %h4 Session Registrations
+    - if @course_registrations.count > 0
+      %table.table.table-fixed
+        %thead
+          %tr
+            %th Course
+            %th  
+        %tbody
+          - @course_registrations.each do |course_registration|
+            %tr
+              %td= link_to course_registration.course.name, course_path(course_registration.course)
+              %td= link_to 'Unregister', course_registration, method: :delete, data: { confirm: 'Are you sure?' }
+    - else
+      %div
+        You have no registrations, check out #{link_to "Sessions", courses_path} to sign up!
+  .clearfix
+  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f|
+    %h4 Account Information
+    = devise_error_messages!
+    .form-group
+      = f.label :username
+      = f.text_field :username, :autofocus => true, class: 'form-control'
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :email
+      = f.email_field :email, class: 'form-control'
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+    .form-group
+      = f.label "Parent or Guardian name"
+      = f.text_field :parent_name, class: 'form-control'
+    .form-group
+      = f.input :grade, collection: ["K","1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th"]
+    .form-group
+      = f.input :experience, collection: ["Beginner","Intermediate","Advanced"], as: :radio_buttons
+    .form-group
+      = f.input :mobile_number, as: :tel, label: "Mobile number (gives us the ability to txt changes in schedule)"
+    %fieldset
+      %p Leave these fields blank if you don't want to change your password.
+      .form-group
+        = f.label :password
+        = f.password_field :password, :autocomplete => 'off', class: 'form-control'
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: 'form-control'
+    %fieldset
+      %p You must enter your current password to make changes.
+      .form-group
+        = f.label :current_password
+        = f.password_field :current_password, class: 'form-control'
+    = f.submit 'Update', :class => 'button right'
+.authform
+  %h3 Cancel Account
+  %p Unhappy? We'll be sad to see you go.
+  = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right'

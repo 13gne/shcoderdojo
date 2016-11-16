@@ -1,0 +1,54 @@
+/ Page Content
+.container
+  / Page Heading/Breadcrumbs
+  .row
+    .col-lg-12
+      %h1.page-header
+        Contact
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li
+          = link_to 'Home', root_path
+        %li.active Contact
+  / /.row
+  / Content Row
+  .row
+    / Map Column
+    .col-md-8
+      / Embedded Google Map
+      %iframe{:frameborder => "0", :height => "400px", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3523.0696047998345!2d-82.6906296849317!3d27.991766782675015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2ee8bb210a207%3A0xde0877253b85c5b6!2sSafety+Harbor+Public+Library!5e0!3m2!1sen!2sus!4v1459280135953", :width => "100%"}
+    / Contact Details Column
+    .col-md-4
+      %h3 Contact Details
+      %p
+        Safety Harbor Library
+      %p
+        101 2nd Street North
+        %br>/
+        Safety Harbor, Florida 34695
+        %br/
+      %p
+        %i.fa.fa-phone
+        = succeed ":" do
+          %abbr{:title => "Phone"} P
+      %p
+        %i.fa.fa-envelope-o
+        = succeed ":" do
+          %abbr{:title => "Email"} E
+        %a{:href => "mailto:shcoderdojo@gmail.com"} shcoderdojo@gmail.com
+      %ul.list-unstyled.list-inline.list-social-icons
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-facebook-square.fa-2x
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-linkedin-square.fa-2x
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-twitter-square.fa-2x
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-google-plus-square.fa-2x
+  / /.row
+  / Contact Form
+/ /.container

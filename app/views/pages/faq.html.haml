@@ -1,0 +1,147 @@
+/ Page Content
+.container
+  / Page Heading/Breadcrumbs
+  .row
+    .col-lg-12
+      %h1.page-header
+        FAQ
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li
+          = link_to 'Home', root_path
+        %li.active FAQ
+  / /.row
+  / Content Row
+  %h2 Parents
+  .row
+    .col-lg-12
+      #accordion.panel-group
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+                Does my child need to already know code?
+          #collapseOne.panel-collapse.collapse
+            .panel-body
+              There are no requirements for attending a CoderDojo class other than bringing yourself and a desire to learn. Every Dojo teaches a basic introduction to making a webpage as a starting point to learning how to code. From there, children begin to learn how to code in more advanced languages by learning from each other and from the mentors.
+        / /.panel
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseTwo"}
+                What is the age range of the students?
+          #collapseTwo.panel-collapse.collapse
+            .panel-body
+              Approximately 7–17 years old.
+        / /.panel
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseThree"}
+                On average how many students are at each session?
+          #collapseThree.panel-collapse.collapse
+            .panel-body
+              Between 10–30 students.
+        / /.panel
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseFour"}
+                What level IT skills do students need at the start?
+          #collapseFour.panel-collapse.collapse
+            .panel-body
+              It’s recommended that they have used a computer and browsed the internet before but no real computer skills are needed. The point is to introduce kids to programming and inspire them to explore technology on their own.
+        / /.panel
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseFive"}
+                What level of code you are offering at classes?
+          #collapseFive.panel-collapse.collapse
+            .panel-body
+              Our CoderDojo develops content to suit the students and mentors in attendance. CoderDojo recommends HTML as a good starting point to demonstrate to kids that they can actually create content. This will encourage progression into more complex programming with functions/loops/variables etc.
+        / /.panel
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseSix"}
+                Who are the mentors?
+          #collapseSix.panel-collapse.collapse
+            .panel-body
+              Mentors include parents, teachers and programmers from the industry who are enthusiastic about helping kids to develop their coding skills.
+        / /.panel
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseSeven"}
+                Can I stay with my child during the class?
+          #collapseSeven.panel-collapse.collapse
+            .panel-body
+              Yes! We highly encourage parents to stay with their children throughout the process. This allows everyone to learn something new and amazing!
+        / /.panel
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseEight"}
+                Do we need to provide a laptop?
+          #collapseEight.panel-collapse.collapse
+            .panel-body
+              Parents are supposed to bring a laptop for their child’s use at our Dojo. We understand that this might not be possible. If you need help acquiring one please click here to contact us
+        / /.panel
+      / /.panel-group
+    / /.col-lg-12
+  / /.row
+  / Content Row
+  %h2 Mentors
+  .row
+    .col-lg-12
+      #accordion.panel-group
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseNine"}
+                Do I need to have programming knowledge to be a mentor?
+          #collapseNine.panel-collapse.collapse
+            .panel-body
+              No. All a mentor needs are problem solving skills, the ability to google, and a passion for technology.
+        / /.panel
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseTen"}
+                Will I be expected to teach at sessions?
+          #collapseTen.panel-collapse.collapse
+            .panel-body
+              No, kids will be directed to websites to learn from. Mentors will provide assistance, problem solving, and encourage collaboration between kids.
+        / /.panel
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseEleven"}
+                Do I need to bring anything?
+          #collapseEleven.panel-collapse.collapse
+            .panel-body
+              No. Each child will have their own laptop.
+        / /.panel
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseTwelve"}
+                Do I have to attend every session to be a mentor?
+          #collapseTwelve.panel-collapse.collapse
+            .panel-body
+              You’re not required to attend every session, though we’d love to have you!
+        / /.panel
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseThirteen"}
+                I have kids interested in coding, can I bring them along?
+          #collapseThirteen.panel-collapse.collapse
+            .panel-body
+              Of course! Let us know if you want them to be in your group and we’ll make arrangements.
+        / /.panel
+      / /.panel-group
+    / /.col-lg-12
+  / /.row
+/ /.container

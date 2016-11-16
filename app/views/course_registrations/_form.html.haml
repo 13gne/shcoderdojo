@@ -1,0 +1,10 @@
+= simple_form_for(@course_registration) do |f|
+  = f.error_notification
+  Course: #{@course.name}
+  .form-inputs
+    = f.hidden_field :user_id
+    = f.hidden_field :course_id
+    = f.input :name, as: :fake, disabled: true, input_html: { value: current_user.name }
+    = f.input :course_name, as: :fake, disabled: true, input_html: { value: @course.name }
+  .form-actions
+    = f.button :submit, "Register for this course"

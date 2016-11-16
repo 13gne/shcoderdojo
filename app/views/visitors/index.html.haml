@@ -1,0 +1,37 @@
+/ Header Carousel
+.bg
+.jumbotron
+  = image_tag "logo_vert_lg.png"
+/ Page Content
+#main.container
+  / Marketing Icons Section
+  .row
+    .col-lg-12
+      %h1.page-header
+        Welcome to the Safety Harbor CoderDojo
+    .col-md-9
+      %p
+        Safety Harbor CoderDojo is part of the #{link_to "CoderDojo", "http://www.coderdojo.com"} movement,  -- free, volunteer-led,
+        community based programming clubs for young people. At a Dojo, young people, between 7 and 17, learn how to code, develop websites,
+        apps, programs, games and explore technology in an informal and creative environment. In addition to learning to code attendees meet
+        like minded people and are exposed to the possibilities of technology.
+      %br/
+      %p
+        Within the CoderDojo Movement there is a focus on community, peer learning, youth mentoring and self led learning,  with an emphasis
+        on showing how coding is a force for change in the world.
+      %br/
+      %p
+        We meet at the Safety Harbor Public Library at 101 2nd Street North, Safety Harbor, FL 34695. Check the #{link_to "Sessions", courses_path}
+        page for our current schedule.
+    .col-md-3
+      = image_tag "home_img_01.png", class: "img-circle img-responsive"
+  / /.row
+  %hr/
+  / Call to Action Section
+  .well
+    .row
+      .col-md-8
+        %p Interested in signing up? Click the Sign Up button to create an account and we'll let you know when the next course starts.
+      .col-md-4
+        = link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-default btn-block"
+/ /.container

@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong User:
+  = @course_registration.user_id
+%p
+  %strong Student:
+  = @course_registration.student_id
+%p
+  %strong Course:
+  = @course_registration.course_id
+= link_to 'Edit', edit_course_registration_path(@course_registration)
+|
+= link_to 'Back', course_registrations_path
