@@ -30,14 +30,17 @@
               %td= course.end_date.strftime("%-m/%-e/%Y") unless course.end_date.nil?
               %td= course.description
               %td
-                - if user_signed_in?
-                  - if current_user.course_registered(course.id)
-                    Already Registered
+                - if course.enrollable
+                  - if user_signed_in?
+                    - if current_user.course_registered(course.id)
+                      Already Registered
+                    - else
+                      = link_to "Register for this course", new_course_registration_path(course_id: course.id)
                   - else
-                    = link_to "Register for this course", new_course_registration_path(course_id: course.id)
+                    = link_to "Sign up", new_user_registration_path
+                    or #{link_to "Sign in", new_user_session_path} to register
                 - else
-                  = link_to "Sign up", new_user_registration_path
-                  or #{link_to "Sign in", new_user_session_path} to register
+                  Enrollment closed
   / /.row
 / /.container
 %br/

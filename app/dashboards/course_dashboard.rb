@@ -17,6 +17,7 @@ class CourseDashboard < Administrate::BaseDashboard
     max_students: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    enrollable: Field::Boolean
   }
 
   # COLLECTION_ATTRIBUTES
@@ -41,6 +42,7 @@ class CourseDashboard < Administrate::BaseDashboard
     :end_date,
     :description,
     :max_students,
+    :enrollable,
     :created_at,
     :updated_at,
   ]
@@ -55,6 +57,7 @@ class CourseDashboard < Administrate::BaseDashboard
     :end_date,
     :description,
     :max_students,
+    :enrollable
   ]
 
   # Overwrite this method to customize how courses are displayed
