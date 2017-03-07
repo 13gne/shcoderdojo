@@ -12,9 +12,12 @@
     .form-group
       = f.label :username
       = f.text_field :username, :autofocus => true, class: 'form-control'
-      .form-group
-        = f.label :password
-        = f.password_field :password, class: 'form-control'
+    .form-group
+      = f.label :password
+      = f.password_field :password, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: 'form-control'
     .form-group
       = f.input :name, label: "Student's name (first and last)"
     .form-group
@@ -23,9 +26,6 @@
     .form-group
       = f.label :email
       = f.email_field :email, class: 'form-control'
-    .form-group
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation, class: 'form-control'
     .form-group
       = f.input :grade, collection: ["K","1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th"]
     .form-group
