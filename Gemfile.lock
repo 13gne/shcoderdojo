@@ -97,9 +97,6 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
-    devise_invitable (1.5.5)
-      actionmailer (>= 3.2.6, < 5)
-      devise (>= 3.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -292,7 +289,6 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise (>= 4.2)
-  devise_invitable
   factory_girl_rails
   faker
   figaro

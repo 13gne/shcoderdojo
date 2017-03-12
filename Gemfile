@@ -16,7 +16,6 @@ end
 gem 'administrate'
 gem 'bootstrap-sass'
 gem 'devise', '>= 4.2'
-gem 'devise_invitable'
 gem 'figaro'
 gem 'high_voltage'
 gem 'pg'
