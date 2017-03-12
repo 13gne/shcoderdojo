@@ -37,6 +37,8 @@
 #
 
 class User < ActiveRecord::Base
+  attr_accessor :parent_or_student
+
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
@@ -46,7 +48,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :students
@@ -67,5 +69,9 @@ class User < ActiveRecord::Base
     else
       true
     end
+  end
+
+  def user_missing_info?
+    return true if self.students.count < 1
   end
 end

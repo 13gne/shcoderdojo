@@ -1,17 +1,17 @@
 .authform
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
     %h3 Sign up
-    .alert.alert-info
+    = devise_error_messages!
+    .well
       %strong Please note:
       %p
         Only sign up for an account if you are 13 years old or older. If you are not, please have your parent or guardian sign up for you.
       %p
         Please use an email address that will be checked regularly as this is how we will contact you about any schedule changes and
         to inform you of new classes and events.
-    = devise_error_messages!
     .form-group
-      = f.label :username
-      = f.text_field :username, :autofocus => true, class: 'form-control'
+      = f.label :email
+      = f.email_field :email, class: 'form-control'
     .form-group
       = f.label :password
       = f.password_field :password, class: 'form-control'
@@ -19,17 +19,6 @@
       = f.label :password_confirmation
       = f.password_field :password_confirmation, class: 'form-control'
     .form-group
-      = f.input :name, label: "Student's name (first and last)"
+      = f.input :parent_or_student, collection: ['I am a PARENT', 'I am a STUDENT'], checked: 'I am a PARENT', as: :radio_buttons, label: false
     .form-group
-      = f.label "Parent or Guardian name"
-      = f.text_field :parent_name, class: 'form-control'
-    .form-group
-      = f.label :email
-      = f.email_field :email, class: 'form-control'
-    .form-group
-      = f.input :grade, collection: ["K","1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th"]
-    .form-group
-      = f.input :experience, collection: ["Beginner","Intermediate","Advanced"], as: :radio_buttons
-    .form-group
-      = f.input :mobile_number, as: :tel, label: "Mobile number (gives us the ability to txt changes in schedule)"
     = f.submit 'Sign up', :class => 'button right'
