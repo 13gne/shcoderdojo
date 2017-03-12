@@ -13,12 +13,17 @@ class ApplicationController < ActionController::Base
   protected
 
   def collect_user_information
-    redirect_to edit_user_registration_path if user_signed_in? && current_user.user_missing_info?
+    redirect_to edit_user_registration_path if send_to_registration?
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit(:email, :password, :password_confirmation, :parent_or_student)
-    end
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:parent_or_student])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :mobile_number])
+  end
+
+  def send_to_registration?
+    return true if user_signed_in? && current_user.registration_not_complete?
+    return true if user_signed_in? && current_user.no_students?
+    return false
   end
 end

@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+  skip_before_action :collect_user_information, only: [:new, :create]
 
   # GET /students
   # GET /students.json
@@ -14,7 +15,7 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
-    @student = Student.new
+    @student = current_user.students.build
   end
 
   # GET /students/1/edit

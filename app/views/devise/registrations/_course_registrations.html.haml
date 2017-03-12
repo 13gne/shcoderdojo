@@ -1,0 +1,18 @@
+- @course_registrations = current_user.course_registrations
+.well
+  %h4 Session Registrations
+  - if @course_registrations.count > 0
+    %table.table.table-fixed
+      %thead
+        %tr
+          %th Course
+          %th  
+      %tbody
+        - @course_registrations.each do |course_registration|
+          %tr
+            %td= link_to course_registration.course.name, course_path(course_registration.course)
+            %td= link_to 'Unregister', course_registration, method: :delete, data: { confirm: 'Are you sure?' }
+  - else
+    %div
+      You have no registrations, check out #{link_to "Sessions", courses_path} to sign up!
+.clearfix

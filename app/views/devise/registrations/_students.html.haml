@@ -1,0 +1,10 @@
+.well
+  %h4 Students
+  %table.table
+    %tr
+      %th Name
+      %th Profile
+    - current_user.students.each do |student|
+      %tr
+        %th= student.name
+        %th= link_to 'Edit', student_path(student)
