@@ -1,5 +1,7 @@
-%h1 Editing Student
-= render 'form'
-= link_to 'Show', @student
-|
-= link_to 'Back', students_path
+.container
+  .row
+    .col-lg-12
+      %h3 Edit Student Profile
+      .well
+        = render 'form'
+      = link_to 'Back', edit_user_registration_path
