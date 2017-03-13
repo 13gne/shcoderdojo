@@ -1,7 +1,13 @@
 .container
   .row
     .col-lg-12
-      %h3 My Profile
+      %h1.page-header
+        My Profile
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li
+          = link_to 'Home', root_path
+        %li.active User Profile
       - if @current_user.registration_not_complete?
         = render partial: 'complete_registration'
       - elsif @current_user.no_students?

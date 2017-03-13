@@ -1,7 +1,15 @@
 .container
   .row
     .col-lg-12
-      %h3 Create New Student Profile
+      %h1.page-header
+        New Student
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li
+          = link_to 'Home', root_path
+        %li
+          = link_to 'My Profile', edit_user_registration_path
+        %li.active New Student Profile
       .well
         = render 'form'
       = link_to 'Back', edit_user_registration_path
