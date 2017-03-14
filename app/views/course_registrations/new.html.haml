@@ -1,21 +1,15 @@
-/ Page Content
 .container
-  / Page Heading/Breadcrumbs
   .row
     .col-lg-12
       %h1.page-header
-        New Session Registration
+        New Course Registration
         %small Safety Harbor CoderDojo
       %ol.breadcrumb
         %li= link_to 'Home', root_path
-        %li= link_to 'Sessions', courses_path
+        %li= link_to 'Courses', courses_path
         %li= link_to 'Registrations', course_registrations_path
-        %li.active Register for Session
-  / /.row
-  / Intro Content
+        %li.active Register for Course
   .row
     .col-md-12
-      = render 'form'
-  / /.row
-/ /.container
-%br/
+      .well
+        = render 'form'

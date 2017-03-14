@@ -283,6 +283,7 @@ DEPENDENCIES
   administrate
   annotate
   better_errors
+  binding_of_caller
   bootstrap-sass
   byebug
   capybara

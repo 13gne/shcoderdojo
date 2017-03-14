@@ -4,24 +4,30 @@
   .row
     .col-lg-12
       %h1.page-header
-        Sessions
+        Courses
         %small Safety Harbor CoderDojo
       %ol.breadcrumb
         %li
           = link_to 'Home', root_path
-        %li.active Sessions
+        %li.active Courses
   / /.row
   / Intro Content
   .row
     .col-md-12
+      - if current_user.try(:admin?)
+        = link_to 'New Course', new_course_path
       %table.table.table-fixed
         %thead
+          %tr
+            %td{colspan: 5, style: 'font-size: 26px;'} Current and Upcoming Courses
           %tr
             %th Name
             %th Start date
             %th End date
             %th Description
-            %th  
+            %th
+            - if current_user.try(:admin?)
+              %th Admin
         %tbody
           - @courses.each do |course|
             %tr
@@ -41,6 +47,30 @@
                     or #{link_to "Sign in", new_user_session_path} to register
                 - else
                   Enrollment closed
-  / /.row
-/ /.container
-%br/
+              - if current_user.try(:admin?)
+                %td #{link_to 'Edit', edit_course_path(course)}
+          %tr
+            %td
+          %tr
+            %td
+        %thead
+          %tr
+            %td{colspan: 5, style: 'font-size: 26px;'} Past Courses
+          %tr
+            %th Name
+            %th Start date
+            %th End date
+            %th Description
+            %th
+            - if current_user.try(:admin?)
+              %th Admin
+        %tbody
+          - @past_courses.each do |course|
+            %tr
+              %td= link_to course.name, course_path(course.id)
+              %td= course.start_date.strftime("%-m/%-e/%Y") unless course.start_date.nil?
+              %td= course.end_date.strftime("%-m/%-e/%Y") unless course.end_date.nil?
+              %td= course.description
+              %td Enrollment closed
+              - if current_user.try(:admin?)
+                %td #{link_to 'Edit', edit_course_path(course)}
