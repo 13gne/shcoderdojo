@@ -1,26 +1,31 @@
-/ Page Content
 .container
-  / Page Heading/Breadcrumbs
   .row
     .col-lg-12
       %h1.page-header
-        Sessions
+        Course
         %small Safety Harbor CoderDojo
       %ol.breadcrumb
         %li= link_to 'Home', root_path
         %li
-          = link_to "Sessions", courses_path
+          = link_to 'Courses', courses_path
         %li.active
           = @course.name
-          Meetings
-  / /.row
-  / Intro Content
   .row
     .col-md-12
+      .well
+        %h3= @course.name
+        %p= @course.description
+  .row
+    .col-md-12
+      .well
+        This course will meet for the following sessions. Notice a mentor may provide notes specifically for
+        that session.
+      - if current_user.try(:admin?)
+        %p= link_to 'New Session', new_course_session_path
       %table.table.table-fixed.table-bordered.table-striped.table-hover
         %thead
           %tr
-            %th Date
+            %th Session
             %th Notes
         %tbody
           - @sessions.each do |session|
@@ -30,7 +35,5 @@
                 %br/
                 = session.session_date.strftime("%l:%M%P")
               %td= sanitize(session.notes)
-  / /.row
-/ /.container
 %p#notice= notice
 %br/
