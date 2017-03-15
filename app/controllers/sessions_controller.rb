@@ -14,7 +14,8 @@ class SessionsController < ApplicationController
 
   # GET /sessions/new
   def new
-    @session = Session.new
+    @course = Course.find(params[:course])
+    @session = @course.sessions.build
   end
 
   # GET /sessions/1/edit
@@ -28,7 +29,7 @@ class SessionsController < ApplicationController
 
     respond_to do |format|
       if @session.save
-        format.html { redirect_to @session, notice: 'Session was successfully created.' }
+        format.html { redirect_to @session.course, notice: 'Session was successfully created.' }
         format.json { render :show, status: :created, location: @session }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class SessionsController < ApplicationController
   def update
     respond_to do |format|
       if @session.update(session_params)
-        format.html { redirect_to @session, notice: 'Session was successfully updated.' }
+        format.html { redirect_to @session.course, notice: 'Session was successfully updated.' }
         format.json { render :show, status: :ok, location: @session }
       else
         format.html { render :edit }

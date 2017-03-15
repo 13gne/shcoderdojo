@@ -1,46 +1,49 @@
-/ Page Content
 .container
-  / Page Heading/Breadcrumbs
   .row
     .col-lg-12
       %h1.page-header
-        Sessions
+        Courses
         %small Safety Harbor CoderDojo
+        - if current_user.try(:admin?)
+          .pull-right
+            = link_to 'New Course', new_course_path, :class => 'btn btn-primary'
       %ol.breadcrumb
         %li
           = link_to 'Home', root_path
-        %li.active Sessions
-  / /.row
-  / Intro Content
+        %li.active Courses
   .row
     .col-md-12
-      %table.table.table-fixed
-        %thead
-          %tr
-            %th Name
-            %th Start date
-            %th End date
-            %th Description
-            %th  
-        %tbody
-          - @courses.each do |course|
-            %tr
-              %td= link_to course.name, course_path(course.id)
-              %td= course.start_date.strftime("%-m/%-e/%Y") unless course.start_date.nil?
-              %td= course.end_date.strftime("%-m/%-e/%Y") unless course.end_date.nil?
-              %td= course.description
-              %td
-                - if course.enrollable
-                  - if user_signed_in?
-                    - if current_user.course_registered(course.id)
-                      Already Registered
-                    - else
-                      = link_to "Register for this course", new_course_registration_path(course_id: course.id)
-                  - else
-                    = link_to "Sign up", new_user_registration_path
-                    or #{link_to "Sign in", new_user_session_path} to register
-                - else
-                  Enrollment closed
-  / /.row
-/ /.container
-%br/
+      %h2 Current and Upcoming Courses
+      - @courses.each do |course|
+        .well.clearfix
+          .row
+            .col-md-9
+              %h3
+                = link_to course.name, course_path(course)
+                %small #{course.max_students - course.course_registrations.count} of #{course.max_students} seats available
+              %p= course.description.html_safe
+            .col-md-3
+              .row
+                .col-md-12
+                  .pull-right.clearfix
+                    = link_to "Register", new_course_registration_path(course_id: course), :class => 'btn btn-primary text-right'
+              .row
+                .col-md-12
+                  .text-right{style: 'margin-top: 10px;'}
+                    %strong
+                      .j1= course.sessions.first.session_date.strftime("%-m/%-e/%Y")
+                      .j1 thru
+                      .j1= course.sessions.last.session_date.strftime("%-m/%-e/%Y")
+
+      %h2 Past Courses
+      - @past_courses.each do |course|
+        .well.clearfix
+          .row
+            .col-md-9
+              %h3= link_to course.name, course_path(course)
+              %p= course.description.html_safe
+            .col-md-3
+              .row
+                .col-md-12
+                  .pull-right.clearfix
+                    = link_to "Register", '#', :class => 'btn btn-primary disabled'

@@ -4,7 +4,8 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all.order(start_date: :desc)
+    @courses = Course.where(current: true).order(start_date: :desc)
+    @past_courses = Course.where(current: false).order(start_date: :desc)
   end
 
   # GET /courses/1

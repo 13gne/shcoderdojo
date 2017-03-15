@@ -1,0 +1,16 @@
+.well.clearfix
+  %h4 Your Students
+  %table.table
+    %tr
+      %th Name
+      %th Grade
+      %th Experience
+      %th
+    - current_user.students.each do |student|
+      %tr
+        %td= student.name
+        %td= student.grade
+        %td= student.experience
+        %td= link_to 'Edit', edit_student_path(student)
+  .pull-right
+    =link_to 'Add New', new_student_path, class: 'btn btn-primary'

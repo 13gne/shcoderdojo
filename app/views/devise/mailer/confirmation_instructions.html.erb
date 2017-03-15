@@ -1,4 +1,4 @@
-<p><%= @resource.username.titleize %>,</p>
+<p><%= @resource.email %>,</p>
 
 <p>Welcome to Safety Harbor CoderDojo!</p>
 
@@ -10,8 +10,8 @@
 <p><%= link_to 'CONFIRM MY ACCOUNT', confirmation_url(@resource, confirmation_token: @token) %></p>
 
 <p>
-  Don't forget to <%= link_to 'register for a session', courses_path %> after you confirm your
-  account or we won't know you're coming. We look forward to seeing you soon!
+  After you confirm your account, we'll walk you through registering for a session.
+  We look forward to seeing you soon!
 </p>
 
 <p>
