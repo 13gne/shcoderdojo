@@ -31,9 +31,9 @@
                 .col-md-12
                   .text-right{style: 'margin-top: 10px;'}
                     %strong
-                      .j1= course.sessions.first.session_date.strftime("%-m/%-e/%Y")
+                      .j1= course.sessions.first.session_date.strftime("%-m/%-e/%Y") unless course.sessions.count == 0
                       .j1 thru
-                      .j1= course.sessions.last.session_date.strftime("%-m/%-e/%Y")
+                      .j1= course.sessions.last.session_date.strftime("%-m/%-e/%Y") unless course.sessions.count == 0
 
       %h2 Past Courses
       - @past_courses.each do |course|
