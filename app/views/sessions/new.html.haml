@@ -2,12 +2,13 @@
   .row
     .col-lg-12
       %h1.page-header
-        New Course Session(Admin Only)
+        New Course Session (Admin Only)
         %small Safety Harbor CoderDojo
       %ol.breadcrumb
         %li= link_to 'Home', root_path
         %li= link_to 'Courses', courses_path
-        %li.active Create New Course
+        %li= link_to @course.name, course_path(@course)
+        %li.active Create New Session
   .row
     .col-md-12
       .well

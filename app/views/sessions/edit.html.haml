@@ -1,5 +1,15 @@
-%h1 Editing Session
-= render 'form'
-= link_to 'Show', @session
-|
-= link_to 'Back', sessions_path
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Edit Course Session (Admin Only)
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Courses', courses_path
+        %li= link_to @session.course.name, course_path(@session.course)
+        %li.active Edit Session
+  .row
+    .col-md-12
+      .well
+        = render 'form'

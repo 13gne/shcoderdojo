@@ -6,3 +6,4 @@ $ ->
     inlineMode: false,
     heightMin: '200px',
   });
+  $('.flatpickr').flatpickr();

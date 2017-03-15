@@ -6,8 +6,9 @@
         %small Safety Harbor CoderDojo
         - if current_user.try(:admin?)
           .pull-right
+            = link_to "Attendance", course_registrations_path(course: @course), :class => 'btn btn-default'
             = link_to "Edit", edit_course_path(@course), :class => 'btn btn-info'
-            = link_to 'New Session', new_course_session_path, :class => 'btn btn-primary'
+            = link_to 'New Session', new_course_session_path(course: @course), :class => 'btn btn-primary'
       %ol.breadcrumb
         %li= link_to 'Home', root_path
         %li
@@ -29,13 +30,13 @@
           %tr
             %th Session
             %th Notes
+            - if current_user.try(:admin?)
+              %th
         %tbody
           - @sessions.each do |session|
             %tr
               %td
                 = session.session_date.strftime("%-m/%-e/%Y")
-                %br/
-                = session.session_date.strftime("%l:%M%P")
-              %td= sanitize(session.notes)
-%p#notice= notice
-%br/
+              %td= session.notes.html_safe
+              - if current_user.try(:admin?)
+                %td= link_to 'Edit', edit_course_session_path(session), :class => 'btn btn-primary'
