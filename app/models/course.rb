@@ -15,4 +15,8 @@
 class Course < ActiveRecord::Base
   has_many :course_registrations
   has_many :sessions
+
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :max_students, numericality: true
 end

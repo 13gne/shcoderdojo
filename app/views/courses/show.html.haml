@@ -4,6 +4,10 @@
       %h1.page-header
         Course
         %small Safety Harbor CoderDojo
+        - if current_user.try(:admin?)
+          .pull-right
+            = link_to "Edit", edit_course_path(@course), :class => 'btn btn-info'
+            = link_to 'New Session', new_course_session_path, :class => 'btn btn-primary'
       %ol.breadcrumb
         %li= link_to 'Home', root_path
         %li
@@ -18,10 +22,8 @@
   .row
     .col-md-12
       .well
-        This course will meet for the following sessions. Notice a mentor may provide notes specifically for
+        This course will meet for the following sessions. Please note: a mentor may provide notes specifically for
         that session.
-      - if current_user.try(:admin?)
-        %p= link_to 'New Session', new_course_session_path
       %table.table.table-fixed.table-bordered.table-striped.table-hover
         %thead
           %tr
