@@ -1,2 +1,3 @@
 $ ->
   $('.panel').matchHeight()
+  $('.editor').froalaEditor();
