@@ -1,3 +1,8 @@
+#= require froala_editor.min.js
+
 $ ->
   $('.panel').matchHeight()
-  $('.editor').froalaEditor();
+  $('.editor').froalaEditor({
+    inlineMode: false,
+    heightMin: '200px',
+  });

@@ -19,7 +19,7 @@
           .row
             .col-md-9
               %h3= link_to course.name, course_path(course)
-              %p= course.description
+              %p= course.description.html_safe
             .col-md-3
               .pull-right
                 = link_to "Register", new_course_registration_path(course_id: course), :class => 'btn btn-primary'
