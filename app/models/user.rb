@@ -51,8 +51,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :students
-  has_many :course_registrations
+  has_many :students, dependent: :destroy
+  has_many :course_registrations, dependent: :destroy
 
   def email_required?
     false

@@ -13,8 +13,8 @@
 #
 
 class Course < ActiveRecord::Base
-  has_many :course_registrations
-  has_many :sessions
+  has_many :course_registrations, dependent: :destroy
+  has_many :sessions, dependent: :destroy
 
   validates :name, presence: true
   validates :description, presence: true

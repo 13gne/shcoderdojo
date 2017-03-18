@@ -12,8 +12,7 @@
         = render partial: 'complete_registration'
       - elsif @current_user.no_students?
         = render partial: 'no_students'
-      - else
-        = render partial: 'students'
+      = render partial: 'students'
       = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f|
         .well
           %h4 Account Information
