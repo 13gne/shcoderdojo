@@ -1,5 +1,12 @@
 language: ruby
 rvm:
-  - 2.2
+- 2.2
 cache:
-  - bundler
+- bundler
+deploy:
+  provider: heroku
+  api_key:
+    secure: fHXwVAzCldKCRDKS9NWODAzYdTZ8Vb1sZPMKXs9ZClQc1X2VLSBfznoNA3GAfEabpDRhLMT27wVJTpDeEjG9cBmJBrrBJitc9I0IcnOSqbm4/Pcs+RMDaV0hjmAG3KzECwzsHsuEDI1dXkIN11k4QK7sP8ZWTd+aaZ0x4lrSwROAWql/vgjK1CxXuAVd0d2TOrVd1nd8TMw16AWe5H8WIScSNshusdU0/Xlx/HoyuW5VGobyxb6ENdMkAvgVv007a6zSBuOnroS0oJ8pY5qNKS5hnLdfBbFSc/wEcs4xLXtYchNoDA+xmoxxcW8pKTnTqhu+SVOxRsUQ2L/DGRzktC66bLU5fnnBuA5ee414EOA0oTAdLeqa0gHat6YXor6w8UlwaJJ6KxPTKkhhjCSfhdCdeDelf4zq3g2JsCRAGiqBDLJHPM8Ynbu6nk8I+D/g07O8e/vVPn1mNuE5FTR2IlInzzgHh9OuVXgyHdYO+d5tDhPk4utIDBf6yBkQ9NB2rjlyI8blzkqk2xoGI1PAtLodU+NxHO4tRwPQ18JVhuHziZxlk1IquYr4fJCuoELpSeHsgr6jO5mGw6KbWIUN+7FZRTfNRUqr0xZWYBf09ISz7k7x/1OJU6z5y2G6nakPFoRC5hL4coY1fB8MX6tJ+ebXTwFoKy5+uxgWPvWOH9o=
+  app: shcoderdojo
+  on:
+    repo: 13gne/shcoderdojo
