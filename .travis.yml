@@ -1,8 +1,13 @@
 language: ruby
 rvm:
-- 2.3.3
+  - 2.3.3
 cache:
-- bundler
+  - bundler
+services:
+  - postgresql
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
 deploy:
   provider: heroku
   api_key:
