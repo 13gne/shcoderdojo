@@ -19,6 +19,4 @@
       = f.label :password_confirmation
       = f.password_field :password_confirmation, class: 'form-control'
     .form-group
-      = f.input :parent_or_student, collection: ['I am a PARENT', 'I am a STUDENT'], checked: 'I am a PARENT', as: :radio_buttons, label: false
-    .form-group
     = f.submit 'Sign up', :class => 'button right'
