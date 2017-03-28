@@ -1,4 +1,5 @@
 #= require froala_editor.min.js
+#= require plugins/link.min.js
 
 $ ->
   $('.panel').matchHeight()

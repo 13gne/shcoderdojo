@@ -20,6 +20,12 @@
       .well
         %h3= @course.name
         %p= @course.description.html_safe
+  - unless @course.resources.nil?
+    .row
+      .col-md-12
+        .well
+          %h3 Course Resources
+          %p= @course.resources.html_safe
   .row
     .col-md-12
       .well
