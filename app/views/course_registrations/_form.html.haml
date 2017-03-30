@@ -5,6 +5,6 @@
   .form-group
     = f.input :course_name, as: :fake, disabled: true, input_html: { value: @course.name }
   .form-group
-    = f.association :student, association: current_user.students
+    = f.input :student, collection: current_user.students
   .form-actions
     = f.button :submit, "Register for this course"
