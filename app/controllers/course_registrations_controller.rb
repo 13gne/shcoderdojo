@@ -34,10 +34,11 @@ class CourseRegistrationsController < ApplicationController
   # POST /course_registrations.json
   def create
     @course_registration = CourseRegistration.new(course_registration_params)
+    @course = @course_registration.course
 
     respond_to do |format|
       if @course_registration.save
-        format.html { redirect_to course_registrations_path, notice: 'Course registration was successfully created.' }
+        format.html { redirect_to @course, notice: 'Successfully registered. We look forward to seeing you there!' }
         format.json { render :show, status: :created, location: @course_registration }
       else
         format.html { render :new }

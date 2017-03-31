@@ -14,4 +14,7 @@ class CourseRegistration < ActiveRecord::Base
   belongs_to :user
   belongs_to :student
   belongs_to :course
+
+  validates :user_id, :student_id, :course_id, presence: true
+  validates :student_id, uniqueness: { scope: :course_id, message: "can't sign up for the same course more than once"}
 end
