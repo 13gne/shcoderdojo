@@ -5,7 +5,13 @@ class CourseRegistrationsController < ApplicationController
   # GET /course_registrations
   # GET /course_registrations.json
   def index
-    @course_registrations = current_user.course_registrations.all
+    @course = Course.find(params[:course])
+    @sessions = Session.where(course_id: @course.id).order(:session_date)
+    if current_user.admin?
+      @course_registrations = CourseRegistration.where(course: @course).includes(:student).order('students.name')
+    else
+      @course_registrations = current_user.course_registrations.where(course: @course)
+    end
   end
 
   # GET /course_registrations/1
