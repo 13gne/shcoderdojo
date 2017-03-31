@@ -13,3 +13,10 @@
     .col-md-12
       .well
         = render 'form'
+  .row
+    .col-md-12
+      = link_to 'Delete Session',
+        course_session_path(@session),
+        method: :delete,
+        data: { confirm: 'Are you sure? This action cannot be undone.' },
+        class: 'btn btn-danger btn-block'

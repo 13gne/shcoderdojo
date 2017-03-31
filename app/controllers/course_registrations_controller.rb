@@ -64,9 +64,10 @@ class CourseRegistrationsController < ApplicationController
   # DELETE /course_registrations/1
   # DELETE /course_registrations/1.json
   def destroy
+    @course = @course_registration.course
     @course_registration.destroy
     respond_to do |format|
-      format.html { redirect_to course_registrations_url, notice: 'Course registration was successfully destroyed.' }
+      format.html { redirect_to course_url(@course), notice: 'Course registration was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
