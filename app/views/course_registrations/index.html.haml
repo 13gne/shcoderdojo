@@ -14,14 +14,16 @@
       %table.table.table-fixed
         %thead
           %tr
+            %th
             %th Student
             %th Parent Account
             %th{:colspan => "3"}
             - @sessions.each do |session|
               %th= session.session_date.strftime("%-m/%-e")
         %tbody
-          - @course_registrations.each do |course_registration|
+          - @course_registrations.each_with_index do |course_registration, i|
             %tr
+              %td= i+1
               %td= course_registration.student.name
               %td= course_registration.student.user.email
               - @sessions.each do |session|
