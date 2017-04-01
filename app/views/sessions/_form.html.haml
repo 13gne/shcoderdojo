@@ -1,8 +1,0 @@
-= simple_form_for @session, url: course_sessions_path do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :course_id, as: :hidden
-    = f.input :session_date, input_html: { class: 'flatpickr' }, as: :string
-    = f.input :notes, input_html: { class: 'editor' }
-  .form-actions
-    = f.button :submit, input_html: { class: 'btn-block'}
