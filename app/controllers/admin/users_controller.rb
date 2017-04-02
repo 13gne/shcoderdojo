@@ -1,7 +1,9 @@
 module Admin
   class UsersController < AdminBaseController
     def index
-      @users = User.all.order(:name).includes(:students)
+      @q = User.search(params[:q])
+      @q.sorts = 'name asc' if @q.sorts.empty?
+      @users = @q.result
     end
   end
 end

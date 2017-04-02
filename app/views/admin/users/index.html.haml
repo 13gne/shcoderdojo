@@ -10,25 +10,26 @@
         %li.active Users
   .row
     .col-md-12
-      %table.table.table-fixed.table-striped
-        %thead
-          %tr
-            %th
-            %th Name
-            %th Email
-            %th Mobile
-            %th.text-center Students
-            %th Registered
-            %th.text-center Confirmed
-        %tbody
-          - @users.each_with_index do |user, i|
+      = search_form_for @q do |f|
+        %table.table.table-fixed.table-striped
+          %thead
             %tr
-              %td= i+1
-              %td= user.name
-              %td= user.email
-              %td= user.mobile_number
-              %td.text-center= user.students.count
-              %td= user.created_at.strftime("%-m/%-e/%Y %k:%M")
-              %td.text-center
-                - if user.confirmed_at?
-                  %span.glyphicon.glyphicon-ok{'aria-hidden': true}
+              %th
+              %th= sort_link(@q, :name, 'Name')
+              %th= sort_link(@q, :email, 'Email')
+              %th Mobile
+              %th.text-center Students
+              %th= sort_link(@q, :created_at, 'Registered')
+              %th.text-center Confirmed
+          %tbody
+            - @users.each_with_index do |user, i|
+              %tr
+                %td= i+1
+                %td= user.name
+                %td= user.email
+                %td= user.mobile_number
+                %td.text-center= user.students.count
+                %td= user.created_at.strftime("%-m/%-e/%Y %k:%M")
+                %td.text-center
+                  - if user.confirmed_at?
+                    %span.glyphicon.glyphicon-ok{'aria-hidden': true}
