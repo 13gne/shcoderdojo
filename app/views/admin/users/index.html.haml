@@ -10,17 +10,25 @@
         %li.active Users
   .row
     .col-md-12
-      = search_form_for @q do |f|
+      = search_form_for @q, url: admin_users_path do |f|
         %table.table.table-fixed.table-striped
           %thead
             %tr
               %th
               %th= sort_link(@q, :name, 'Name')
               %th= sort_link(@q, :email, 'Email')
-              %th Mobile
-              %th.text-center Students
+              %th= sort_link(@q, :mobile_number, 'Mobile')
+              %th.text-center= sort_link(@q, :number_of_students, 'Students')
               %th= sort_link(@q, :created_at, 'Registered')
               %th.text-center Confirmed
+            %tr
+              %th
+              %th= f.search_field :name_cont, label: false
+              %th= f.search_field :email_cont, label: false
+              %th
+              %th
+              %th
+              %th.text-center= f.submit
           %tbody
             - @users.each_with_index do |user, i|
               %tr
