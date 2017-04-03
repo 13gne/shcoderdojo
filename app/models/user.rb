@@ -63,12 +63,21 @@ class User < ActiveRecord::Base
     end
   end
 
+  def name
+    self.read_attribute(:name) || 'Unknown'
+  end
+
   def no_students?
     self.students.count < 1
+  end
+
+  def number_of_students
+    self.students.count
   end
 
   def registration_not_complete?
     return true if self.name.nil?
     return true if self.mobile_number.nil?
   end
+
 end

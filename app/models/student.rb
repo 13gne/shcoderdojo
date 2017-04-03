@@ -13,8 +13,9 @@
 class Student < ActiveRecord::Base
   belongs_to :user
   has_many :course_registrations, dependent: :destroy
+  has_many :attendances, dependent: :destroy
 
   validates :user_id, presence: true
   validates :name, presence: true
-  
+
 end

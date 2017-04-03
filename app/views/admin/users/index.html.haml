@@ -1,0 +1,43 @@
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Admin - Users
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Admin', admin_users_path
+        %li.active Users
+  .row
+    .col-md-12
+      = search_form_for @q, url: admin_users_path do |f|
+        %table.table.table-fixed.table-striped
+          %thead
+            %tr
+              %th
+              %th= sort_link(@q, :name, 'Name')
+              %th= sort_link(@q, :email, 'Email')
+              %th= sort_link(@q, :mobile_number, 'Mobile')
+              %th.text-center= sort_link(@q, :number_of_students, 'Students')
+              %th= sort_link(@q, :created_at, 'Registered')
+              %th.text-center Confirmed
+            %tr
+              %th
+              %th= f.search_field :name_cont, label: false
+              %th= f.search_field :email_cont, label: false
+              %th
+              %th
+              %th
+              %th.text-center= f.submit
+          %tbody
+            - @users.each_with_index do |user, i|
+              %tr
+                %td= i+1
+                %td= user.name
+                %td= user.email
+                %td= user.mobile_number
+                %td.text-center= user.students.count
+                %td= user.created_at.strftime("%-m/%-e/%Y %k:%M")
+                %td.text-center
+                  - if user.confirmed_at?
+                    %span.glyphicon.glyphicon-ok{'aria-hidden': true}
