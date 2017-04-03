@@ -1,0 +1,57 @@
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Admin - User
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Admin', admin_users_path
+        %li= link_to 'Users', admin_users_path
+        %li.active User Admin - #{@user.email}
+  .row
+    .col-md-12
+      .well
+        %h3 User Details
+        %table.table.table-fixed
+          %tr
+            %th Name:
+            %td= @user.name
+          %tr
+            %th Email:
+            %td= @user.email
+          %tr
+            %th Mobile:
+            %td= @user.mobile_number
+          %tr
+            %th Registered:
+            %td= @user.created_at.strftime("%-m/%-e/%Y %k:%M")
+          %tr
+            %th Confirmed:
+            %td
+              - if @user.confirmed_at.nil?
+                = link_to 'Resend Confirmation', new_user_confirmation_path(@user)
+              - else
+                = @user.confirmed_at.strftime("%-m/%-e/%Y %k:%M")
+          %tr
+            %th Log in count:
+            %td= @user.sign_in_count
+          %tr
+            %th Last log in:
+            %td= @user.last_sign_in_at.strftime("%-m/%-e/%Y %k:%M") unless @user.last_sign_in_at.nil?
+          %tr
+            %th Role:
+            %td= @user.role.titleize
+        %h3 Students
+        %table.table
+          %tr
+            %th Name
+            %th Grade
+            %th Experience
+            %th Number of Registrations
+          - @user.students.each do |student|
+            %tr
+              %td= student.name
+              %td= student.grade
+              %td= student.experience
+              %td= student.course_registrations.count
