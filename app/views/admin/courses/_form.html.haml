@@ -1,0 +1,9 @@
+= simple_form_for(@course) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name
+    = f.input :description, input_html: { class: 'editor' }
+    = f.input :max_students
+    = f.input :resources, input_html: { class: 'editor' }
+  .form-actions
+    = f.button :submit

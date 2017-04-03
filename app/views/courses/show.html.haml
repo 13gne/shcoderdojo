@@ -7,7 +7,7 @@
         - if current_user.try(:admin?)
           .pull-right
             = link_to "Attendance", course_registrations_path(course: @course), :class => 'btn btn-default'
-            = link_to "Edit", edit_course_path(@course), :class => 'btn btn-info'
+            = link_to "Edit", edit_admin_course_path(@course), :class => 'btn btn-info'
             = link_to 'New Session', new_course_session_path(course: @course), :class => 'btn btn-primary'
       %ol.breadcrumb
         %li= link_to 'Home', root_path
