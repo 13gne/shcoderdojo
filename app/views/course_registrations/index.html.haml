@@ -28,4 +28,4 @@
               %td= link_to course_registration.student.user.name, user_path(course_registration.student.user.id)
               %td= course_registration.created_at.strftime("%-m/%-e/%Y %k:%M")
               - @sessions.each do |session|
-                %td
+                %td= link_to "here", admin_attendances_path(student_id: course_registration.student.id, session_id: session.id), method: :post
