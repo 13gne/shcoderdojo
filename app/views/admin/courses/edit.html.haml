@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Edit Course (Admin Only)
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Courses', courses_path
+        %li.active Edit Course
+  .row
+    .col-md-12
+      .well
+        = render 'form'
