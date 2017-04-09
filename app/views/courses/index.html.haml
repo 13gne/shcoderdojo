@@ -11,6 +11,29 @@
         %li
           = link_to 'Home', root_path
         %li.active Courses
+  - if user_signed_in?
+    .row
+      .col-md-12
+        %h2 Your Registered Courses
+        - if current_user.current_registrations.count == 0
+          .well.clearfix
+            .row
+              .col-md-12
+                %h3 You have no current course registrations
+        - else
+          .well.clearfix
+            .row
+              %table.table
+                %tr
+                  %th Course
+                  %th Student
+                  %th Registered on
+                - current_user.current_registrations.each do |course_registration|
+                  %tr
+                    %td= link_to course_registration.course.name,
+                      course_path(course_registration.course.id)
+                    %td= course_registration.student.name
+                    %td= course_registration.created_at.strftime("%-m/%-e/%Y %k:%M")
   .row
     .col-md-12
       %h2 Current and Upcoming Courses
