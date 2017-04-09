@@ -1,0 +1,44 @@
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Course Registrations & Attendance
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Courses', courses_path
+        %li= link_to @course.name, @course
+        %li.active Registration & Attendance
+  .row
+    .col-md-12
+      %table.table.table-fixed
+        %thead
+          %tr
+            %th
+            %th Student
+            %th Parent Account
+            %th Registered
+            - @sessions.each do |session|
+              %th= session.session_date.strftime("%-m/%-e")
+        %tbody
+          - @course_registrations.each_with_index do |course_registration, i|
+            %tr
+              %td= i+1
+              %td #{link_to course_registration.student.name, student_path(course_registration.student.id)} - #{course_registration.student.experience}
+              %td= link_to course_registration.student.user.name, user_path(course_registration.student.user.id)
+              %td= course_registration.created_at.strftime("%-m/%-e/%Y %k:%M")
+              - @sessions.each do |session|
+                - attendance = session.attended_by_student?(course_registration.student_id)
+                - if attendance == false
+                  -# action when student is not marked as present
+                  %td= link_to 'Not Present',
+                    admin_attendances_path(student_id: course_registration.student.id,
+                    session_id: session.id),
+                    method: :post,
+                    class: 'btn btn-warning btn-block'
+                - else
+                  -# action when student is marked as present
+                  %td= link_to 'Present',
+                    admin_attendance_path(attendance.id),
+                    method: :delete,
+                    class: 'btn btn-success btn-block'
