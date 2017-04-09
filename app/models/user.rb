@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
   has_many :students, dependent: :destroy
   has_many :course_registrations, dependent: :destroy
 
+  def current_registrations
+    self.course_registrations.joins(:course).where( courses: { current: true })
+  end
+  
   def course_registered(course_id)
     c = CourseRegistration.where(user_id: self.id, course_id: course_id)
     if c.count == 0
