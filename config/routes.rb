@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :courses do
       resources :course_registrations
     end
+    resources :course_registrations
     root to: 'users#index'
   end
   resources :course_registrations

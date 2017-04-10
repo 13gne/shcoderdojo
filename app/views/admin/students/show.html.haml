@@ -28,7 +28,10 @@
             %th Created:
             %td= @student.created_at.strftime("%-m/%-e/%Y %l:%M%p")
       .well
-        %h3 Registrations
+        %h3
+          Registrations
+        .pull-right
+          = link_to "New", new_admin_course_registration_path(user_id: @user.id, student_id: @student.id), :class => 'btn btn-info'
         %table.table
           %tr
             %th Course
@@ -36,7 +39,7 @@
             %th
           - @student.course_registrations.each do |course_registration|
             %tr
-              %td= course_registration.course.name
+              %td= link_to course_registration.course.name, course_path(course_registration.course)
               %td= course_registration.created_at.strftime("%-m/%-e/%Y %l:%M%p")
               %td= link_to 'Delete',
                 admin_course_course_registration_path(course_id: course_registration.course.id, id: course_registration.id),
