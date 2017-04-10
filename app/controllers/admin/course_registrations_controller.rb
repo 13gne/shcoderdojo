@@ -6,6 +6,11 @@ module Admin
       @q = CourseRegistration.where(course: @course).ransack(params[:q])
       @q.sorts = 'students.name' if @q.sorts.empty?
       @course_registrations = @q.result
+
+      respond_to do |format|
+        format.html
+        format.csv { send_data @course_registrations.to_csv, filename: "Course Registrations - #{@course.name} - #{Date.today}.csv" }
+      end
     end
 
     def create
