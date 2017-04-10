@@ -43,7 +43,7 @@
                 %td= link_to user.email, admin_user_path(user.id)
                 %td= user.mobile_number
                 %td.text-center= user.students.count
-                %td= user.created_at.strftime("%-m/%-e/%Y %k:%M")
+                %td= user.created_at.strftime("%-m/%-e/%Y %l:%M%p")
                 %td.text-center
                   - if user.confirmed_at?
                     %span.glyphicon.glyphicon-ok{'aria-hidden': true}
