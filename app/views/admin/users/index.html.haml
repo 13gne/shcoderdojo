@@ -23,12 +23,18 @@
               %th.text-center Confirmed
             %tr
               %th
-              %th= f.search_field :name_cont, label: false
-              %th= f.search_field :email_cont, label: false
+              %th
+                = f.search_field :name_cont, label: false
+                = f.button :button do
+                  %i.fa.fa-search
+              %th
+                = f.search_field :email_cont, label: false
+                = f.button :button do
+                  %i.fa.fa-search
               %th
               %th
               %th
-              %th.text-center= f.submit
+              %th
           %tbody
             - @users.each_with_index do |user, i|
               %tr
