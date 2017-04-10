@@ -5,7 +5,7 @@ module Admin
       @sessions = Session.where(course_id: @course.id).order(:session_date)
       @q = CourseRegistration.where(course: @course).ransack(params[:q])
       @q.sorts = 'students.name' if @q.sorts.empty?
-      @course_registrations = @q.result.includes(:student)
+      @course_registrations = @q.result
     end
 
     def create
