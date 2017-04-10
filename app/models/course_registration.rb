@@ -17,4 +17,26 @@ class CourseRegistration < ActiveRecord::Base
 
   validates :user_id, :student_id, :course_id, presence: true
   validates :student_id, uniqueness: { scope: :course_id, message: "can't sign up for the same course more than once"}
+
+  def self.to_csv
+    CSV.generate do |csv|
+      Rails.logger.debug "MAKING A CSV"
+      csv << [
+        "Student",
+        "Parent",
+        "Email",
+        "Grade",
+        "Experience",
+        "Mobile Number"]
+      all.each do |result|
+        csv << [
+          result.student.name,
+          result.user.name,
+          result.user.email,
+          result.student.grade,
+          result.student.experience,
+          result.user.mobile_number]
+      end
+    end
+  end
 end

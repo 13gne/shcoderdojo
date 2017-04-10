@@ -9,6 +9,8 @@
         %li= link_to 'Courses', courses_path
         %li= link_to @course.name, @course
         %li.active Registration & Attendance
+      .pull-right
+        = link_to 'Export', admin_course_course_registrations_path(course_id: @course.id, format: 'csv'), class: 'btn btn-default'
   .row
     .col-md-12
       = search_form_for @q, url: admin_course_course_registrations_path do |f|
