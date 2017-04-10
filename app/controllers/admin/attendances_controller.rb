@@ -5,7 +5,7 @@ module Admin
 
       respond_to do |format|
         if @attendance.save
-          format.html { redirect_to course_registrations_path(course: @attendance.session.course), notice: 'Attenance successfully recorded.' }
+          format.html { redirect_to admin_course_course_registrations_path(course_id: @attendance.session.course.id), notice: 'Attendance successfully recorded.' }
         else
           format.html { render :back }
         end
@@ -16,7 +16,7 @@ module Admin
       @attendance = set_attendance
       @attendance.destroy
       respond_to do |format|
-        format.html { redirect_to :back }
+        format.html { redirect_to :back, alert: 'Attendance successfully removed' }
       end
     end
 

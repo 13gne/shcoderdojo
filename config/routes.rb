@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :users
+    resources :users do
+      resources :students
+    end
     resources :attendances
-    resources :courses, only: [:new, :create, :edit, :update, :destroy]
+    resources :courses do
+      resources :course_registrations
+    end
+    resources :course_registrations
     root to: 'users#index'
   end
   resources :course_registrations

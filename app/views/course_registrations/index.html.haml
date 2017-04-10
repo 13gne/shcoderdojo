@@ -26,7 +26,7 @@
               %td= i+1
               %td #{link_to course_registration.student.name, student_path(course_registration.student.id)} - #{course_registration.student.experience}
               %td= link_to course_registration.student.user.name, user_path(course_registration.student.user.id)
-              %td= course_registration.created_at.strftime("%-m/%-e/%Y %k:%M")
+              %td= course_registration.created_at.strftime("%-m/%-e/%Y %l:%M%p")
               - @sessions.each do |session|
                 - attendance = session.attended_by_student?(course_registration.student_id)
                 - if attendance == false

@@ -23,12 +23,18 @@
               %th.text-center Confirmed
             %tr
               %th
-              %th= f.search_field :name_cont, label: false
-              %th= f.search_field :email_cont, label: false
+              %th
+                = f.search_field :name_cont, label: false
+                = f.button :button do
+                  %i.fa.fa-search
+              %th
+                = f.search_field :email_cont, label: false
+                = f.button :button do
+                  %i.fa.fa-search
               %th
               %th
               %th
-              %th.text-center= f.submit
+              %th
           %tbody
             - @users.each_with_index do |user, i|
               %tr
@@ -37,7 +43,7 @@
                 %td= link_to user.email, admin_user_path(user.id)
                 %td= user.mobile_number
                 %td.text-center= user.students.count
-                %td= user.created_at.strftime("%-m/%-e/%Y %k:%M")
+                %td= user.created_at.strftime("%-m/%-e/%Y %l:%M%p")
                 %td.text-center
                   - if user.confirmed_at?
                     %span.glyphicon.glyphicon-ok{'aria-hidden': true}

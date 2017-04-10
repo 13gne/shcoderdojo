@@ -1,0 +1,47 @@
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Admin - Student
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Admin', admin_users_path
+        %li= link_to 'Users', admin_users_path
+        %li= link_to @user.email, admin_user_path(@user.id)
+        %li.active Student Admin - #{@student.name}
+  .row
+    .col-md-12
+      .well
+        %h3 Student Details
+        %table.table.table-fixed
+          %tr
+            %th Name:
+            %td= @student.name
+          %tr
+            %th Grade:
+            %td= @student.grade
+          %tr
+            %th Experience:
+            %td= @student.experience
+          %tr
+            %th Created:
+            %td= @student.created_at.strftime("%-m/%-e/%Y %l:%M%p")
+      .well
+        %h3
+          Registrations
+        .pull-right
+          = link_to "New", new_admin_course_registration_path(user_id: @user.id, student_id: @student.id), :class => 'btn btn-info'
+        %table.table
+          %tr
+            %th Course
+            %th Registered
+            %th
+          - @student.course_registrations.each do |course_registration|
+            %tr
+              %td= link_to course_registration.course.name, course_path(course_registration.course)
+              %td= course_registration.created_at.strftime("%-m/%-e/%Y %l:%M%p")
+              %td= link_to 'Delete',
+                admin_course_course_registration_path(course_id: course_registration.course.id, id: course_registration.id),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
