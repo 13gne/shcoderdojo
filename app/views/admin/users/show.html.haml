@@ -51,7 +51,7 @@
             %th Number of Registrations
           - @user.students.each do |student|
             %tr
-              %td= student.name
+              %td= link_to student.name, admin_user_student_path(user_id: @user.id, id: student.id)
               %td= student.grade
               %td= student.experience
               %td= student.course_registrations.count

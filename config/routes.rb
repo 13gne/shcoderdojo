@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :users
+    resources :users do
+      resources :students
+    end
     resources :attendances
     resources :courses do
       resources :course_registrations
     end
-    resources :students
     root to: 'users#index'
   end
   resources :course_registrations
