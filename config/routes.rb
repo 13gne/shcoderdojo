@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :belts
+  resources :topics
   namespace :admin do
     resources :users do
       resources :students

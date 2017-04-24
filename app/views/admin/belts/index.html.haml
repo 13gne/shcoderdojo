@@ -1,0 +1,23 @@
+%h1 Listing belts
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Sequence
+      %th
+      %th
+      %th
+
+  %tbody
+    - @belts.each do |belt|
+      %tr
+        %td= belt.name
+        %td= belt.sequence
+        %td= link_to 'Show', belt
+        %td= link_to 'Edit', edit_belt_path(belt)
+        %td= link_to 'Destroy', belt, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Belt', new_belt_path

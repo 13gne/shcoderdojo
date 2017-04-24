@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @belt.name
+%p
+  %b Sequence:
+  = @belt.sequence
+
+= link_to 'Edit', edit_belt_path(@belt)
+\|
+= link_to 'Back', belts_path
