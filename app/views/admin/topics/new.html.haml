@@ -1,5 +1,17 @@
-%h1 New topic
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Admin - New Topic
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Admin', admin_users_path
+        %li= link_to 'Topics', admin_topics_path
+        %li.active New Topic
+  .row
+    .col-md-12
 
-= render 'form'
+      = render 'form'
 
-= link_to 'Back', topics_path
+      = link_to 'Back', admin_topics_path
