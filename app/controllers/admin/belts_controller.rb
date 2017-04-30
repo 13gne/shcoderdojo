@@ -5,7 +5,7 @@ module Admin
     # GET /belts
     # GET /belts.json
     def index
-      @belts = Belt.all
+      @belts = Belt.all.order(:sequence)
     end
 
     # GET /belts/1

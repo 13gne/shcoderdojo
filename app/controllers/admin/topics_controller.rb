@@ -5,7 +5,7 @@ module Admin
     # GET /topics
     # GET /topics.json
     def index
-      @topics = Topic.all
+      @topics = Topic.all.order(:sequence)
     end
 
     # GET /topics/1

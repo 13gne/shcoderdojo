@@ -1,23 +1,30 @@
-%h1 Listing achievements
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Admin - Achievements
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Admin', admin_users_path
+        %li.active Achievements
+  .row
+    .col-md-12
 
-%table
-  %thead
-    %tr
-      %th Topic
-      %th Belt
-      %th
-      %th
-      %th
+      %table.table
+        %thead
+          %tr
+            %th Name
+            %th
+            %th
 
-  %tbody
-    - @achievements.each do |achievement|
-      %tr
-        %td= achievement.topic_id
-        %td= achievement.belt_id
-        %td= link_to 'Show', achievement
-        %td= link_to 'Edit', edit_achievement_path(achievement)
-        %td= link_to 'Destroy', achievement, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %tbody
+          - @achievements.each do |achievement|
+            %tr
+              %td= achievement.name
+              %td= link_to 'Edit', edit_admin_achievement_path(achievement)
+              %td= link_to 'Destroy', admin_achievement_path(achievement), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+      %br
 
-= link_to 'New Achievement', new_achievement_path
+      = link_to 'New Achievement', new_admin_achievement_path
