@@ -1,5 +1,26 @@
-%h1 New belt
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Admin - New Belt
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Admin', admin_users_path
+        %li= link_to 'Belts', admin_belts_path
+        %li.active New Belt
+  .row
+    .col-md-12
 
-= render 'form'
+      = simple_form_for @belt, url: admin_belts_path do |f|
+        = f.error_notification
 
-= link_to 'Back', belts_path
+        .form-group
+          = f.input :name
+        .form-group
+          = f.input :sequence, collection: 1..20
+        .form-actions
+          = f.button :submit, 'Save'
+
+
+      = link_to 'Back', admin_belts_path

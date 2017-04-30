@@ -29,7 +29,7 @@ module Admin
 
       respond_to do |format|
         if @belt.save
-          format.html { redirect_to @belt, notice: 'Belt was successfully created.' }
+          format.html { redirect_to admin_belts_path, notice: 'Belt was successfully created.' }
           format.json { render :show, status: :created, location: @belt }
         else
           format.html { render :new }
@@ -43,7 +43,7 @@ module Admin
     def update
       respond_to do |format|
         if @belt.update(belt_params)
-          format.html { redirect_to @belt, notice: 'Belt was successfully updated.' }
+          format.html { redirect_to admin_belts_path, notice: 'Belt was successfully updated.' }
           format.json { render :show, status: :ok, location: @belt }
         else
           format.html { render :edit }
@@ -57,7 +57,7 @@ module Admin
     def destroy
       @belt.destroy
       respond_to do |format|
-        format.html { redirect_to belts_url, notice: 'Belt was successfully destroyed.' }
+        format.html { redirect_to admin_belts_url, notice: 'Belt was successfully destroyed.' }
         format.json { head :no_content }
       end
     end
