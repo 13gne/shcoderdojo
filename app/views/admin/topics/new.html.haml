@@ -12,6 +12,15 @@
   .row
     .col-md-12
 
-      = render 'form'
+      = simple_form_for @topic, url: admin_topics_path do |f|
+        = f.error_notification
+
+        .form-group
+          = f.input :name
+        .form-group
+          = f.input :sequence, collection: 1..20
+        .form-actions
+          = f.button :submit, 'Save'
+
 
       = link_to 'Back', admin_topics_path
