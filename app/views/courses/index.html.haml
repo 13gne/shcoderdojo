@@ -34,6 +34,31 @@
                       course_path(course_registration.course.id)
                     %td= course_registration.student.name
                     %td= course_registration.created_at.strftime("%-m/%-e/%Y %l:%M%p")
+  - if user_signed_in? && current_user.try(:admin?)
+    .row
+      .col-md-12
+        %h2 Unpublished Courses
+        - @unpublished_courses.each do |course|
+          .well.clearfix
+            .row
+              .col-md-9
+                %h3
+                  = link_to course.name, course_path(course)
+                  %small #{course.max_students - course.course_registrations.count} of #{course.max_students} seats available
+                %p= course.description.html_safe
+              .col-md-3
+                .row
+                  .col-md-12
+                    .pull-right.clearfix
+                      .course-button{style: 'margin-bottom: 5px;'}
+                        = link_to "More Info", course_path(course), class: 'btn btn-success btn-block text-right'
+                .row
+                  .col-md-12
+                    .text-right{style: 'margin-top: 10px;'}
+                      %strong
+                        %div= course.sessions.first.session_date.strftime("%-m/%-e/%Y") unless course.sessions.count == 0
+                        %div thru
+                        %div= course.sessions.last.session_date.strftime("%-m/%-e/%Y") unless course.sessions.count == 0
   .row
     .col-md-12
       %h2 Current and Upcoming Courses

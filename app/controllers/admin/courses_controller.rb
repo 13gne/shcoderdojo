@@ -3,7 +3,7 @@ module Admin
     before_action :set_course, only: [:edit, :update, :destroy]
 
     def edit
-      
+
     end
 
     private
@@ -14,7 +14,7 @@ module Admin
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def course_params
-        params.require(:course).permit(:name, :start_date, :end_date, :description, :max_students, :resources)
+        params.require(:course).permit(:name, :start_date, :end_date, :description, :max_students, :resources, :published)
       end
   end
 end
