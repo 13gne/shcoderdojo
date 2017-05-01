@@ -4,8 +4,9 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.where(current: true).order(start_date: :desc)
-    @past_courses = Course.where(current: false).order(start_date: :desc)
+    @courses = Course.where(current: true, published: true).order(start_date: :desc)
+    @unpublished_courses = Course.where(published: false).order(start_date: :desc)
+    @past_courses = Course.where(current: false, published: true).order(start_date: :desc)
   end
 
   # GET /courses/1
@@ -71,6 +72,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :start_date, :end_date, :description, :max_students, :resources)
+      params.require(:course).permit(:name, :start_date, :end_date, :description, :max_students, :resources, :published)
     end
 end
