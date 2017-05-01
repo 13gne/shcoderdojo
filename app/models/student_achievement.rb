@@ -4,4 +4,6 @@ class StudentAchievement < ActiveRecord::Base
 
   validates :student_id, presence: true
   validates :achievement_id, presence: true
+
+  delegate :name, to: :achievement
 end
