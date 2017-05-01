@@ -29,6 +29,7 @@ group :development do
   gem 'annotate'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'rails-erd'
 end
 group :test do
   gem 'capybara'
