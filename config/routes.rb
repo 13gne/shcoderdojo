@@ -5,6 +5,7 @@ Rails.application.routes.draw do
         resources :student_achievements
       end
     end
+    resources :students, only: [:index]
     resources :attendances
     resources :courses do
       resources :course_registrations

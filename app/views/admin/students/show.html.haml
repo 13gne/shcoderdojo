@@ -49,7 +49,9 @@
         %h3
           Achievements
         .pull-right
-          = link_to "New Achievement", "#"
+          = link_to "New Achievement",
+            new_admin_user_student_student_achievement_path(user_id: @user.id, student_id: @student.id),
+            :class => 'btn btn-info'
         %table.table
           %tr
             %th Achievement
