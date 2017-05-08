@@ -9,7 +9,7 @@
         %li= link_to 'Admin', admin_users_path
         %li= link_to 'Users', admin_users_path
         %li= link_to @user.email, admin_user_path(@user.id)
-        %li= link_to @student.name, admin_user_student_path(user_id: @user.id, student_id: @student.id)
+        %li= link_to @student.name, admin_user_student_path(user_id: @user.id, id: @student.id)
         %li.active New Student Achievement
   .row
     .col-md-12
@@ -28,3 +28,14 @@
           %tr
             %th Created:
             %td= @student.created_at.strftime("%-m/%-e/%Y %l:%M%p")
+      .well
+        %h3 New Achievement
+        = simple_form_for @student_achievement, url: admin_user_student_student_achievements_path(user_id: @user.id, student_id: @student.id) do |f|
+          = f.error_notification
+
+          .form-group
+            = f.association :achievement
+          .form-actions
+            = f.button :submit, 'Save'
+
+        

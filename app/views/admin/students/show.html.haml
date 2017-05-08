@@ -62,3 +62,5 @@
             %tr
               %td= student_achievement.name
               %td= student_achievement.created_at.strftime("%-m/%-e/%Y %l:%M%p")
+              %td
+                %td= link_to 'Delete', admin_user_student_student_achievement_path(id: student_achievement.id, student_id: student_achievement.student_id), method: :delete, data: { confirm: 'Are you sure?' }

@@ -27,10 +27,11 @@ module Admin
     # POST /student_achievements.json
     def create
       @student_achievement = StudentAchievement.new(student_achievement_params)
+      @student_achievement.student_id = params[:student_id]
 
       respond_to do |format|
         if @student_achievement.save
-          format.html { redirect_to admin_student_student_achievements_path(user_id: @user.id, student_id: @student.id), notice: 'StudentAchievement was successfully created.' }
+          format.html { redirect_to admin_user_student_path(user_id: @user.id, id: @student.id), notice: 'StudentAchievement was successfully created.' }
           format.json { render :show, status: :created, location: @student_achievement }
         else
           format.html { render :new }
@@ -44,7 +45,7 @@ module Admin
     def update
       respond_to do |format|
         if @student_achievement.update(student_achievement_params)
-          format.html { redirect_to admin_student_student_achievements_path(user_id: @user.id, student_id: @student.id), notice: 'StudentAchievement was successfully updated.' }
+          format.html { redirect_to admin_user_student_path(user_id: @user.id, id: @student.id), notice: 'StudentAchievement was successfully updated.' }
           format.json { render :show, status: :ok, location: @student_achievement }
         else
           format.html { render :edit }
@@ -58,7 +59,7 @@ module Admin
     def destroy
       @student_achievement.destroy
       respond_to do |format|
-        format.html { redirect_to admin_student_student_achievements_path(user_id: @user.id, student_id: @student.id), notice: 'StudentAchievement was successfully destroyed.' }
+        format.html { redirect_to admin_user_student_path(user_id: @user.id, id: @student.id), notice: 'StudentAchievement was successfully destroyed.' }
         format.json { head :no_content }
       end
     end
@@ -76,7 +77,7 @@ module Admin
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def student_achievement_params
-        params.require(:student_achievement).permit(:name, :sequence)
+        params.require(:student_achievement).permit(:achievement_id)
       end
   end
 end
