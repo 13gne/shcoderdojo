@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Topic:
+  = @achievement.topic_id
+%p
+  %b Belt:
+  = @achievement.belt_id
+
+= link_to 'Edit', edit_achievement_path(@achievement)
+\|
+= link_to 'Back', achievements_path

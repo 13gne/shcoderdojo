@@ -1,0 +1,32 @@
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Admin - Topics
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Admin', admin_users_path
+        %li.active Topics
+  .row
+    .col-md-12
+
+      %table.table
+        %thead
+          %tr
+            %th Name
+            %th Sequence
+            %th
+            %th
+
+        %tbody
+          - @topics.each do |topic|
+            %tr
+              %td= topic.name
+              %td= topic.sequence
+              %td= link_to 'Edit', edit_admin_topic_path(topic)
+              %td= link_to 'Destroy', admin_topic_path(topic), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+      %br
+
+      = link_to 'New Topic', new_admin_topic_path

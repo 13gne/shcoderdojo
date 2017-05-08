@@ -45,3 +45,22 @@
                 admin_course_course_registration_path(course_id: course_registration.course.id, id: course_registration.id),
                 method: :delete,
                 data: { confirm: 'Are you sure?' }
+      .well
+        %h3
+          Achievements
+        .pull-right
+          = link_to "New Achievement",
+            new_admin_user_student_student_achievement_path(user_id: @user.id, student_id: @student.id),
+            :class => 'btn btn-info'
+        %table.table
+          %tr
+            %th Achievement
+            %th Received
+            %th
+            %th
+          - @student.student_achievements.each do |student_achievement|
+            %tr
+              %td= student_achievement.name
+              %td= student_achievement.created_at.strftime("%-m/%-e/%Y %l:%M%p")
+              %td
+                %td= link_to 'Delete', admin_user_student_student_achievement_path(id: student_achievement.id, student_id: student_achievement.student_id), method: :delete, data: { confirm: 'Are you sure?' }
