@@ -19,4 +19,8 @@ class Course < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true
   validates :max_students, numericality: true
+
+  def seats_remaining
+    [self.max_students - self.course_registrations.count, 0].max
+  end
 end

@@ -68,7 +68,7 @@
             .col-md-9
               %h3
                 = link_to course.name, course_path(course)
-                %small #{course.max_students - course.course_registrations.count} of #{course.max_students} seats available
+                %small #{course.seats_remaining} of #{course.max_students} seats available
               %p= course.description.html_safe
             .col-md-3
               .row
@@ -77,7 +77,10 @@
                     .course-button{style: 'margin-bottom: 5px;'}
                       = link_to "More Info", course_path(course), class: 'btn btn-success btn-block text-right'
                     .course-button
-                      = link_to "Register", new_course_registration_path(course_id: course), class: 'btn btn-primary btn-block text-right'
+                      - if course.seats_remaining > 0
+                        = link_to "Register", new_course_registration_path(course_id: course), class: 'btn btn-primary btn-block text-right'
+                      - else
+                        = link_to "Register", '#', class: 'btn btn-primary btn-block text-right disabled'
               .row
                 .col-md-12
                   .text-right{style: 'margin-top: 10px;'}
