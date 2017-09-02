@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.where(current: true, published: true).order(start_date: :desc)
     @unpublished_courses = Course.where(published: false).order(start_date: :desc)
-    @past_courses = Course.where(current: false, published: true).order(start_date: :desc)
+    @past_courses = Course.where(current: false, published: true).order(created_at: :desc)
   end
 
   # GET /courses/1
