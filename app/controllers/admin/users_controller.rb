@@ -6,6 +6,10 @@ module Admin
       @users = @q.result.includes(:students)
     end
 
+    def edit
+      @user = User.find(params[:id])
+    end
+
     def show
       @user = User.includes(:students).find(params[:id])
     end

@@ -12,7 +12,6 @@
   .row
     .col-md-12
       .well
-        = link_to "Edit", edit_admin_user_path(@user), class: 'btn btn-success text-right pull-right'
         %h3 User Details
         %table.table.table-fixed
           %tr
@@ -43,16 +42,3 @@
           %tr
             %th Role:
             %td= @user.role.titleize
-        %h3 Students
-        %table.table
-          %tr
-            %th Name
-            %th Grade
-            %th Experience
-            %th Number of Registrations
-          - @user.students.each do |student|
-            %tr
-              %td= link_to student.name, admin_user_student_path(user_id: @user.id, id: student.id)
-              %td= student.grade
-              %td= student.experience
-              %td= student.course_registrations.count
