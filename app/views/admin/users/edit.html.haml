@@ -13,32 +13,18 @@
     .col-md-12
       .well
         %h3 User Details
-        %table.table.table-fixed
-          %tr
-            %th Name:
-            %td= @user.name
-          %tr
-            %th Email:
-            %td= @user.email
-          %tr
-            %th Mobile:
-            %td= @user.mobile_number
-          %tr
-            %th Registered:
-            %td= @user.created_at.strftime("%-m/%-e/%Y %l:%M%p")
-          %tr
-            %th Confirmed:
-            %td
-              - if @user.confirmed_at.nil?
-                = link_to 'Resend Confirmation', new_user_confirmation_path(@user)
-              - else
-                = @user.confirmed_at.strftime("%-m/%-e/%Y %l:%M%p")
-          %tr
-            %th Log in count:
-            %td= @user.sign_in_count
-          %tr
-            %th Last log in:
-            %td= @user.last_sign_in_at.strftime("%-m/%-e/%Y %l:%M%p") unless @user.last_sign_in_at.nil?
-          %tr
-            %th Role:
-            %td= @user.role.titleize
+        = simple_form_for @user, url: admin_user_path(@user) do |f|
+          = f.error_notification
+
+          .form-group
+            = f.input :name
+          .form-group
+            = f.input :email
+          .form-group
+            = f.input :mobile_number
+          .form-group
+            = f.input :role, collection: User.roles.keys
+          .form-actions
+            = f.button :submit, 'Save'
+
+        = link_to 'Cancel', admin_user_path(@user)
