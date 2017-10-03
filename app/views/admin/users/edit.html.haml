@@ -1,0 +1,30 @@
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Admin - User
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Admin', admin_users_path
+        %li= link_to 'Users', admin_users_path
+        %li.active User Admin - #{@user.email}
+  .row
+    .col-md-12
+      .well
+        %h3 User Details
+        = simple_form_for @user, url: admin_user_path(@user) do |f|
+          = f.error_notification
+
+          .form-group
+            = f.input :name
+          .form-group
+            = f.input :email
+          .form-group
+            = f.input :mobile_number
+          .form-group
+            = f.input :role, collection: User.roles.keys
+          .form-actions
+            = f.button :submit, 'Save'
+
+        = link_to 'Cancel', admin_user_path(@user)

@@ -12,7 +12,9 @@
   .row
     .col-md-12
       .well
-        %h3 User Details
+        %h3 Edit User Details
+        .pull-right
+          = link_to "Edit", edit_admin_user_path(@user), :class => 'btn btn-info'
         %table.table.table-fixed
           %tr
             %th Name:
