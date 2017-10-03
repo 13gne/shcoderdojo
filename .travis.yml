@@ -2,7 +2,7 @@ language: ruby
 rvm:
 - 2.3.3
 cache:
-- bundler
+  bundler: true
 services:
 - postgresql
 before_script:
