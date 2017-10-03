@@ -1,0 +1,30 @@
+.container
+  .row
+    .col-lg-12
+      %h1.page-header
+        Admin - Student
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', root_path
+        %li= link_to 'Admin', admin_users_path
+        %li= link_to 'Users', admin_users_path
+        %li= link_to @user.email, admin_user_path(@user)
+        %li= link_to "Student Admin - #{@student.name}", admin_user_student_path(user_id: @user.id, student_id: @student.id)
+        %li.active Edit
+  .row
+    .col-md-12
+      .well
+        %h3 User Details
+        = simple_form_for @student, url: admin_user_student_path(user_id: @user.id, student_id: @student.id) do |f|
+          = f.error_notification
+
+          .form-group
+            = f.input :name
+          .form-group
+            = f.input :grade, collection: ["K","1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th"]
+          .form-group
+            = f.input :experience, collection: ["Beginner","Intermediate","Advanced"], as: :radio_buttons
+          .form-actions
+            = f.button :submit, 'Save'
+
+        = link_to 'Cancel', admin_user_path(@user)
