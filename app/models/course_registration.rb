@@ -18,6 +18,10 @@ class CourseRegistration < ActiveRecord::Base
   validates :user_id, :student_id, :course_id, presence: true
   validates :student_id, uniqueness: { scope: :course_id, message: "can't sign up for the same course more than once"}
 
+  def count_student_attendances
+    Attendance.where(student_id: self.student_id, session_id: self.course.sessions).count
+  end
+
   def self.to_csv
     CSV.generate do |csv|
       Rails.logger.debug "MAKING A CSV"
