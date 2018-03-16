@@ -46,3 +46,8 @@
               %td= session.notes.html_safe
               - if current_user.try(:admin?)
                 %td= link_to 'Edit', edit_course_session_path(session), :class => 'btn btn-primary'
+  - if current_user && current_user.admin?
+    .row
+      .col-md-12
+        .well
+          You are an admin
