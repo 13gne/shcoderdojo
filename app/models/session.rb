@@ -15,6 +15,8 @@ class Session < ActiveRecord::Base
   belongs_to :course
   has_many :attendances
 
+  validates :session_date, presence: true
+
   def attended_by_student?(student_id)
     Attendance.where(session_id: self.id, student_id: student_id).first || false
   end
