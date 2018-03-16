@@ -50,4 +50,8 @@
     .row
       .col-md-12
         .well
-          You are an admin
+          = link_to 'Delete Course',
+            course_path(@course),
+            method: :delete,
+            data: { confirm: 'Are you sure? This action cannot be undone.' },
+            class: 'btn btn-danger btn-block'
