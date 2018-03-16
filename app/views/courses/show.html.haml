@@ -45,7 +45,7 @@
                 = session.session_date.strftime("%-m/%-e/%Y")
               %td= session.notes.html_safe
               - if current_user.try(:admin?)
-                %td= link_to 'Edit', edit_course_session_path(session), :class => 'btn btn-primary'
+                %td= link_to 'Edit', edit_admin_course_course_session_path(course_id: @course.id, id: session.id), :class => 'btn btn-primary'
   - if current_user && current_user.admin?
     .row
       .col-md-12
