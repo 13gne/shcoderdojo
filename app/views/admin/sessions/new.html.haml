@@ -12,7 +12,7 @@
   .row
     .col-md-12
       .well
-        = simple_form_for @session, url: course_sessions_path do |f|
+        = simple_form_for @session, url: admin_course_course_sessions_path do |f|
           = f.error_notification
           .form-inputs
             = f.input :course_id, as: :hidden

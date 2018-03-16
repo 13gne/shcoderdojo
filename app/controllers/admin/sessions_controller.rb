@@ -1,32 +1,21 @@
 module Admin
   class SessionsController < ApplicationController
-    before_action :set_session, only: [:show, :edit, :update, :destroy]
-
-    # GET /sessions
-    # GET /sessions.json
-    def index
-      @sessions = Session.all
-    end
-
-    # GET /sessions/1
-    # GET /sessions/1.json
-    def show
-    end
-
     # GET /sessions/new
     def new
-      @course = Course.find(params[:course])
+      @course = Course.find(params[:course_id])
       @session = @course.sessions.build
     end
 
     # GET /sessions/1/edit
     def edit
+      @session = Session.find(params[:id])
     end
 
     # POST /sessions
     # POST /sessions.json
     def create
       @session = Session.new(session_params)
+      @course = @session.course
 
       respond_to do |format|
         if @session.save
@@ -43,6 +32,8 @@ module Admin
     # PATCH/PUT /sessions/1.json
     def update
       respond_to do |format|
+        @session = Session.find(params[:id])
+
         if @session.update(session_params)
           format.html { redirect_to @session.course, notice: 'Session was successfully updated.' }
           format.json { render :show, status: :ok, location: @session }
@@ -65,10 +56,6 @@ module Admin
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
-      def set_session
-        @session = Session.find(params[:id])
-      end
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def session_params
