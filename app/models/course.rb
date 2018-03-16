@@ -15,7 +15,7 @@
 class Course < ActiveRecord::Base
   has_many :course_registrations, dependent: :destroy
   has_many :sessions, dependent: :destroy
-  has_many :students, :through => :sessions
+  has_many :students, through: :sessions
 
   validates :name, presence: true
   validates :description, presence: true
