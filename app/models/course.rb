@@ -15,7 +15,7 @@
 class Course < ActiveRecord::Base
   has_many :course_registrations, dependent: :destroy
   has_many :sessions, dependent: :destroy
-  has_many :students, :through => :sessions
+  has_many :students, through: :course_registrations
 
   validates :name, presence: true
   validates :description, presence: true
@@ -23,5 +23,9 @@ class Course < ActiveRecord::Base
 
   def seats_remaining
     [self.max_students - self.course_registrations.count, 0].max
+  end
+
+  def deletable?
+    self.students.count == 0
   end
 end

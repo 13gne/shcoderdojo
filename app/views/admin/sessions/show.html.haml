@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Course:
+  = @session.course_id
+%p
+  %strong Session date:
+  = @session.session_date
+%p
+  %strong Notes:
+  = @session.notes
+= link_to 'Edit', edit_session_path(@session)
+|
+= link_to 'Back', sessions_path

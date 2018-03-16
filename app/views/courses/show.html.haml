@@ -8,7 +8,7 @@
           .pull-right
             = link_to "Attendance", admin_course_course_registrations_path(course_id: @course.id), :class => 'btn btn-default'
             = link_to "Edit", edit_admin_course_path(@course), :class => 'btn btn-info'
-            = link_to 'New Session', new_course_session_path(course: @course), :class => 'btn btn-primary'
+            = link_to 'New Session', new_admin_course_course_session_path(course_id: @course.id), :class => 'btn btn-primary'
       %ol.breadcrumb
         %li= link_to 'Home', root_path
         %li
@@ -45,4 +45,14 @@
                 = session.session_date.strftime("%-m/%-e/%Y")
               %td= session.notes.html_safe
               - if current_user.try(:admin?)
-                %td= link_to 'Edit', edit_course_session_path(session), :class => 'btn btn-primary'
+                %td= link_to 'Edit', edit_admin_course_course_session_path(course_id: @course.id, id: session.id), :class => 'btn btn-primary'
+
+  - if current_user && current_user.admin? && @course.deletable?
+    .row
+      .col-md-12
+        .well
+          = link_to 'Delete Course',
+            course_path(@course),
+            method: :delete,
+            data: { confirm: 'Are you sure? This action cannot be undone.' },
+            class: 'btn btn-danger btn-block'

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :attendances
     resources :courses do
       resources :course_registrations
+      resources :sessions, as: :course_sessions
     end
     resources :course_registrations
     resources :achievements
