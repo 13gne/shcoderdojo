@@ -46,7 +46,8 @@
               %td= session.notes.html_safe
               - if current_user.try(:admin?)
                 %td= link_to 'Edit', edit_admin_course_course_session_path(course_id: @course.id, id: session.id), :class => 'btn btn-primary'
-  - if current_user && current_user.admin?
+
+  - if current_user && current_user.admin? && @course.deletable?
     .row
       .col-md-12
         .well
