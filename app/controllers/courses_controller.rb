@@ -9,10 +9,17 @@ class CoursesController < ApplicationController
 
   def show
     @sessions = @course.sessions.order(:session_date)
+    @current_user_number_of_registrations = current_user_number_of_registrations
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+  def current_user_number_of_registrations
+    if current_user
+      CourseRegistration.where(course_id: @course.id, user_id: current_user.id).count
+    end
+  end
+
   def set_course
     @course = Course.find(params[:id])
   end
