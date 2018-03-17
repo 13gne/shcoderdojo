@@ -1,9 +1,10 @@
-= simple_form_for(@course) do |f|
+= simple_form_for [:admin, @course] do |f|
   = f.error_notification
   .form-inputs
     = f.input :name
     = f.input :description, input_html: { class: 'editor' }
     = f.input :max_students
+    = f.input :minimum_level, collection: Achievement.all.sort_by(&:level)
     = f.input :resources, input_html: { class: 'editor' }
     = f.input :published
     = f.input :current

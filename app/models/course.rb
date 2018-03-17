@@ -28,4 +28,10 @@ class Course < ActiveRecord::Base
   def deletable?
     self.students.count == 0
   end
+
+  def minimum_achievement_title
+    unless self.minimum_level.nil? || self.minimum_level == 0
+      Achievement.find(self.minimum_level).name
+    end
+  end
 end
