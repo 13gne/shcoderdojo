@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
   resources :course_registrations
   resources :students
-  resources :courses
+  resources :courses, only: [:index, :show]
   resources :sessions, as: :course_sessions
   root to: 'visitors#index'
   devise_for :users
