@@ -30,7 +30,7 @@
           %p.bg-warning Students must have achieved a minimum of #{@course.minimum_achievement_title} to enroll in this course.
         %p= @course.description.html_safe
 
-  - unless @course.resources.empty?
+  - unless @course.resources.blank?
     .row
       .col-md-12
         .well
