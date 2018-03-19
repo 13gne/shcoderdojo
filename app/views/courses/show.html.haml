@@ -18,9 +18,19 @@
   .row
     .col-md-12
       .well
+        .course-button
+          - if current_user && @current_user_number_of_registrations > 0
+            = link_to "You Have #{@current_user_number_of_registrations} Registration(s) for this Course - Click to Register Another", new_course_registration_path(course_id: @course), class: 'btn btn-primary btn-block text-right'
+          - elsif @course.seats_remaining > 0
+            = link_to "Register", new_course_registration_path(course_id: @course), class: 'btn btn-primary btn-block text-right'
+          - else
+            = link_to "Register", '#', class: 'btn btn-primary btn-block text-right disabled'
         %h3= @course.name
+        - unless @course.minimum_level.nil? || @course.minimum_level == 0
+          %p.bg-warning Students must have achieved a minimum of #{@course.minimum_achievement_title} to enroll in this course.
         %p= @course.description.html_safe
-  - unless @course.resources.nil?
+
+  - unless @course.resources.blank?
     .row
       .col-md-12
         .well

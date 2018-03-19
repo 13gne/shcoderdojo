@@ -4,7 +4,12 @@
   = f.hidden_field :course_id
   .form-group
     = f.input :course_name, as: :fake, disabled: true, input_html: { value: @course.name }
+
+    - unless @course.minimum_level.nil? || @course.minimum_level == 0
+      %span.label.label-warning
+        Students must have achieved a minimum of "#{@course.minimum_achievement_title}" to enroll in this course.
+        
   .form-group
-    = f.input :student_id, collection: current_user.students, input_method: :id
+    = f.input :student_id, collection: current_user.students, label_method: :name_with_maximum_achievement ,input_method: :id
   .form-actions
     = f.button :submit, "Register for this course"

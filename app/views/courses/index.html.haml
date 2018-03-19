@@ -6,7 +6,7 @@
         %small Safety Harbor CoderDojo
         - if current_user.try(:admin?)
           .pull-right
-            = link_to 'New Course', new_course_path, :class => 'btn btn-primary'
+            = link_to 'New Course', new_admin_course_path, :class => 'btn btn-primary'
       %ol.breadcrumb
         %li
           = link_to 'Home', root_path

@@ -20,4 +20,19 @@ class Student < ActiveRecord::Base
   validates :user_id, presence: true
   validates :name, presence: true
 
+  def achievement_with_maximum_level
+    maximum_level = 0
+    maximum_achievement = Achievement.new
+    self.student_achievements.each do |student_achievement|
+      if student_achievement.achievement.level > maximum_level
+        maximum_level = student_achievement.achievement.level
+        maximum_achievement = student_achievement.achievement
+      end
+    end
+    maximum_achievement
+  end
+
+  def name_with_maximum_achievement
+    "#{self.name} - #{self.achievement_with_maximum_level.name}"
+  end
 end

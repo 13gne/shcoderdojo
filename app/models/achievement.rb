@@ -8,4 +8,8 @@ class Achievement < ActiveRecord::Base
   def name
     "#{self.topic.name} - #{self.belt.name} Belt"
   end
+
+  def level
+    self.topic.sequence * 100 + self.belt.sequence
+  end
 end
