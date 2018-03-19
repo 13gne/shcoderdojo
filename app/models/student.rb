@@ -31,4 +31,8 @@ class Student < ActiveRecord::Base
     end
     maximum_achievement
   end
+
+  def name_with_maximum_achievement
+    "#{self.name} - #{self.achievement_with_maximum_level.name}"
+  end
 end
