@@ -6,10 +6,18 @@ class Achievement < ActiveRecord::Base
   validates :topic_id, :belt_id, presence: true
 
   def name
-    "#{self.topic.name} - #{self.belt.name} Belt"
+    if self.id.nil?
+      'None'
+    else
+      "#{self.topic.name} - #{self.belt.name} Belt"
+    end
   end
 
   def level
-    self.topic.sequence * 100 + self.belt.sequence
+    if self.id.nil?
+      0
+    else
+      self.topic.sequence * 100 + self.belt.sequence
+    end
   end
 end

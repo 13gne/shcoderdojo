@@ -12,7 +12,7 @@
         %td= student.name
         %td= student.grade
         %td= student.experience
-        %td= student.achievement_with_maximum_level ? student.achievement_with_maximum_level.name : 'None'
+        %td= student.achievement_with_maximum_level.id.nil? ? 'None' : student.achievement_with_maximum_level.name
         %td= link_to 'Edit', edit_student_path(student)
   .pull-right
     =link_to 'Add New', new_student_path, class: 'btn btn-primary'
