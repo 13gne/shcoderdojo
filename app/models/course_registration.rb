@@ -49,8 +49,13 @@ class CourseRegistration < ActiveRecord::Base
 
   def minimum_level_achieved
     student_achievement_with_maximum_level = student.achievement_with_maximum_level.level
-    course_minimum_level = Achievement.find(course.minimum_level).level
-    
+
+    if course.minimum_level.nil?
+      course_minimum_level = 0
+    else
+      course_minimum_level = Achievement.find(course.minimum_level).level
+    end
+
     unless student_achievement_with_maximum_level >= course_minimum_level
       errors.add(:student, "must have a achieved a minimum of #{Achievement.find(course.minimum_level).name}")
     end
