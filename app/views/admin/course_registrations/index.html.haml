@@ -38,7 +38,7 @@
               %tr
                 %td= i+1
                 %td
-                  #{link_to course_registration.student.name, admin_user_student_path(user_id: course_registration.user.id, id: course_registration.student.id)} (#{course_registration.count_student_attendances})
+                  #{link_to course_registration.student.name_with_maximum_achievement, admin_user_student_path(user_id: course_registration.user.id, id: course_registration.student.id)} (#{course_registration.count_student_attendances})
                 %td= link_to course_registration.student.user.name, admin_user_path(course_registration.student.user.id)
                 %td= course_registration.created_at.strftime("%-m/%-e/%Y %l:%M%p")
                 - @sessions.each do |session|
