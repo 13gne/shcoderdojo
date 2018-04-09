@@ -6,7 +6,7 @@
         %small Safety Harbor CoderDojo
       %ol.breadcrumb
         %li
-          = link_to 'Home', root_path
+          = link_to 'Home', 'http://www.shcoderdojo.org'
         %li.active User Profile
       - if @current_user.registration_not_complete?
         = render partial: 'complete_registration'

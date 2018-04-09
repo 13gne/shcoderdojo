@@ -41,13 +41,25 @@
    background:#fff;
  }
 
+ .navbar
+ {
+    min-height:91px !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+ }
+
+
  .navbar-brand
 {
-    width: 128px;
-    background-image: asset-url('logo_rect_nav.png');
+    width: 165px;
+    background-image: asset-url('sh_coder_dojo_logo.png');
     background-repeat: no-repeat;
     background-position: 50%;
+    background-size: 165px;
 }
+
 
 .row.match-my-cols {
     overflow: hidden;
