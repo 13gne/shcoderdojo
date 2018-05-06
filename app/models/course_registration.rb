@@ -25,22 +25,28 @@ class CourseRegistration < ActiveRecord::Base
 
   def self.to_csv
     CSV.generate do |csv|
-      Rails.logger.debug "MAKING A CSV"
       csv << [
         "Student",
         "Parent",
         "Email",
-        "Grade",
-        "Experience",
-        "Mobile Number"]
+        "Mobile Number",
+        "Times Attended",
+        "Latest Achievement",
+        "Latest Achievement Date"
+      ]
+
       all.each do |result|
+        Rails.logger.debug "RESULT: #{result.inspect}"
         csv << [
           result.student.name,
           result.user.name,
           result.user.email,
-          result.student.grade,
-          result.student.experience,
-          result.user.mobile_number]
+          result.user.mobile_number,
+          result.course.attendances.where(student: result.student).count,
+          result.student.achievement_with_maximum_level.name,
+          result.student.student_achievement_with_maximum_level.nil? ? '' : result.student.student_achievement_with_maximum_level.created_at
+        ]
+
       end
     end
   end

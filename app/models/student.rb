@@ -35,4 +35,13 @@ class Student < ActiveRecord::Base
   def name_with_maximum_achievement
     "#{self.name} - #{self.achievement_with_maximum_level.name}"
   end
+
+  def student_achievement_with_maximum_level
+     achievement = self.achievement_with_maximum_level
+     if achievement.id.nil?
+       nil
+     else
+       self.student_achievements.where(achievement_id: achievement.id).first
+     end
+  end
 end
