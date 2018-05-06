@@ -15,7 +15,7 @@ class Student < ActiveRecord::Base
   has_many :course_registrations, dependent: :destroy
   has_many :attendances, dependent: :destroy
   has_many :student_achievements, dependent: :destroy
-  has_many :courses, :through => :attendances
+  has_many :courses, :through => :course_registrations
 
   validates :user_id, presence: true
   validates :name, presence: true
@@ -34,5 +34,14 @@ class Student < ActiveRecord::Base
 
   def name_with_maximum_achievement
     "#{self.name} - #{self.achievement_with_maximum_level.name}"
+  end
+
+  def student_achievement_with_maximum_level
+     achievement = self.achievement_with_maximum_level
+     if achievement.id.nil?
+       nil
+     else
+       self.student_achievements.where(achievement_id: achievement.id).first
+     end
   end
 end
