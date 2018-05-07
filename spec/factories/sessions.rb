@@ -11,7 +11,7 @@
 #  end_time     :datetime
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :session do
     course_id 1
     session_date "2016-04-05 16:33:43"

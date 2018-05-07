@@ -1,6 +1,6 @@
 module Admin
   class AdminBaseController < ApplicationController
-    before_filter :authorized?
+    before_action :authorized?
 
     private
 
