@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe CourseRegistration do
   context 'database fields' do
     it { should have_db_column(:user_id) }

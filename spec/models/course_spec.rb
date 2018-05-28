@@ -1,19 +1,27 @@
-# == Schema Information
-#
-# Table name: courses
-#
-#  id           :integer          not null, primary key
-#  name         :string
-#  start_date   :date
-#  end_date     :date
-#  description  :text
-#  max_students :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#
+describe Course do
+  context 'database fields' do
+    it { should have_db_column(:name) }
+    it { should have_db_column(:start_date) }
+    it { should have_db_column(:end_date) }
+    it { should have_db_column(:description) }
+    it { should have_db_column(:max_students) }
+    it { should have_db_column(:enrollable) }
+    it { should have_db_column(:current) }
+    it { should have_db_column(:resources) }
+    it { should have_db_column(:published) }
+    it { should have_db_column(:minimum_level) }
+  end
 
-require 'rails_helper'
+  context 'associations' do
+    it { should have_many(:course_registrations) }
+    it { should have_many(:sessions) }
+    it { should have_many(:students) }
+    it { should have_many(:attendances) }
+  end
 
-RSpec.describe Course, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validations' do
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:description) }
+    it { should validate_numericality_of(:max_students) }
+  end
 end

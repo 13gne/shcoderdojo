@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe Belt do
   context 'database fields' do
     it { should have_db_column(:name) }

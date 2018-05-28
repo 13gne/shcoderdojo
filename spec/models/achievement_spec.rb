@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe Achievement do
   context 'database fields' do
     it { should have_db_column(:topic_id) }
