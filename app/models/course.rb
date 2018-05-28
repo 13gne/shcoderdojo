@@ -2,14 +2,19 @@
 #
 # Table name: courses
 #
-#  id           :integer          not null, primary key
-#  name         :string
-#  start_date   :date
-#  end_date     :date
-#  description  :text
-#  max_students :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  created_at    :datetime         not null
+#  current       :boolean
+#  description   :text
+#  end_date      :date
+#  enrollable    :boolean          default(TRUE)
+#  id            :integer          not null, primary key
+#  max_students  :integer
+#  minimum_level :integer
+#  name          :string
+#  published     :boolean          default(FALSE)
+#  resources     :text
+#  start_date    :date
+#  updated_at    :datetime         not null
 #
 
 class Course < ActiveRecord::Base

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: achievements
+#
+#  belt_id    :integer
+#  created_at :datetime         not null
+#  id         :integer          not null, primary key
+#  topic_id   :integer
+#  updated_at :datetime         not null
+#
+
 class Achievement < ActiveRecord::Base
   belongs_to :topic
   belongs_to :belt

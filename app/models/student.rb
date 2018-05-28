@@ -2,12 +2,13 @@
 #
 # Table name: students
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  name       :string
-#  email      :string
 #  created_at :datetime         not null
+#  experience :string
+#  grade      :string
+#  id         :integer          not null, primary key
+#  name       :string
 #  updated_at :datetime         not null
+#  user_id    :integer
 #
 
 class Student < ActiveRecord::Base
