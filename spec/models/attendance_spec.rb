@@ -1,5 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Attendance, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Attendance do
+  context 'database fields' do
+    it { should have_db_column(:student_id) }
+    it { should have_db_column(:session_id) }
+  end
+
+  context 'associations' do
+    it { should belong_to(:student) }
+    it { should belong_to(:session) }
+  end
 end
