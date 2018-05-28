@@ -1,5 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Achievement, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Achievement do
+  context 'database fields' do
+    it { should have_db_column(:topic_id) }
+    it { should have_db_column(:belt_id) }
+  end
+
+  context 'associations' do
+    it { should belong_to(:topic) }
+    it { should belong_to(:belt) }
+  end
 end
