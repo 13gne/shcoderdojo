@@ -1,6 +1,10 @@
 FactoryBot.define do
   factory :student_achievement do
-    student_id 1
-    achievement_id 1
+    student
+    achievement
+
+    factory :high_student_achievement do
+      association :achievement, factory: :high_achievement
+    end
   end
 end

@@ -12,8 +12,13 @@
 
 FactoryBot.define do
   factory :student do
-    user_id 1
-    name "MyString"
-    email "MyString"
+    user
+    name Faker::Name
+
+    factory :student_with_user_and_high_achievement do
+      after(:create) do |student|
+        create(:high_student_achievement, student: student)
+      end
+    end
   end
 end

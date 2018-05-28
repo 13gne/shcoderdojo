@@ -1,6 +1,11 @@
 FactoryBot.define do
   factory :achievement do
-    topic_id 1
-    belt_id 1
+    topic
+    belt
+
+    factory :high_achievement do
+      association :topic, factory: :topic_advanced
+      association :belt, factory: :belt_advanced
+    end
   end
 end

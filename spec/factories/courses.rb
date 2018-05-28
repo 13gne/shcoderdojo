@@ -1,23 +1,14 @@
-# == Schema Information
-#
-# Table name: courses
-#
-#  id           :integer          not null, primary key
-#  name         :string
-#  start_date   :date
-#  end_date     :date
-#  description  :text
-#  max_students :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#
-
 FactoryBot.define do
   factory :course do
-    name "MyString"
-    start_date "2016-03-17"
-    end_date "2016-03-17"
-    description "MyText"
-    max_students 1
+    name Faker::Educator.course
+    start_date Faker::Date.backward(14)
+    end_date Faker::Date.forward(23)
+    description Faker::Hipster.paragraph
+    max_students Faker::Number.between(15, 60)
+    minimum_level nil
+
+    factory :course_with_minimum_achievement do
+      minimum_level 5
+    end
   end
 end
