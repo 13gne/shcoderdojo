@@ -29,7 +29,7 @@ module Admin
     end
 
     def student_params
-      params.require(:student).permit(:name, :grade, :experience)
+      params.require(:student).permit(:name, :grade, :experience, :bag_achievement)
     end
   end
 end
