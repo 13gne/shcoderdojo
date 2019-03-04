@@ -7,7 +7,7 @@ module Admin
         if @attendance.save
           format.html { redirect_to admin_course_course_registrations_path(course_id: @attendance.session.course.id), notice: 'Attendance successfully recorded.' }
         else
-          format.html { render :back }
+          format.html { redirect_to admin_course_course_registrations_path(course_id: @attendance.session.course.id), alert: 'Duplicate attendance record found' }
         end
       end
     end

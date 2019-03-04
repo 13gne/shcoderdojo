@@ -6,5 +6,6 @@ class Attendance < ActiveRecord::Base
 
   validates :student_id, presence: true
   validates :session_id, presence: true
+  validates :student_id, uniqueness: { scope: :session_id }
 
 end
