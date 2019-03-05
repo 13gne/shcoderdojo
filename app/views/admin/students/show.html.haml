@@ -29,6 +29,9 @@
           %tr
             %th Created:
             %td= @student.created_at.strftime("%-m/%-e/%Y %l:%M%p")
+          %tr
+            %th Received bag?:
+            %td= @student.bag_achievement.to_s.capitalize
       .well
         %h3
           Registrations
