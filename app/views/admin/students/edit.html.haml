@@ -24,6 +24,8 @@
             = f.input :grade, collection: ["K","1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th"]
           .form-group
             = f.input :experience, collection: ["Beginner","Intermediate","Advanced"], as: :radio_buttons
+          .form-group
+            = f.input :bag_achievement
           .form-actions
             = f.button :submit, 'Save'
 
