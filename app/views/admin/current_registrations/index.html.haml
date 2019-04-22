@@ -1,1 +1,34 @@
-%h1 Current Course Registrations
+.container-fluid
+  .row
+    .col-lg-12
+      %h1.page-header
+        Admin - Current Course Registrations
+        %small Safety Harbor CoderDojo
+      %ol.breadcrumb
+        %li= link_to 'Home', 'http://www.shcoderdojo.org'
+        %li= link_to 'Admin', admin_users_path
+        %li.active Current Course Registrations
+  .row
+    .col-md-12
+      - @current_courses.each do |course|
+        %h3= course.name
+        %table.table.table-striped
+          %thead
+            %tr
+              %th 
+              %th Name
+              %th Registered
+              - course.sessions.each do |session|
+                %th
+              %th Waitlist
+              %th
+          %tbody
+          - course.course_registrations.each_with_index do |course_registration, i|
+            %tr
+              %td= i + 1
+              %td= course_registration.student.name
+              %td= course_registration.created_at.strftime("%-m/%-e/%Y %l:%M%p")
+              - course.sessions.each do |session|
+                %td Y
+              %td= course_registration.waitlist
+              %td

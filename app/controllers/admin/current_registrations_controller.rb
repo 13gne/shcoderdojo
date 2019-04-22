@@ -1,7 +1,7 @@
 module Admin
   class CurrentRegistrationsController < AdminBaseController
     def index
-      @courses = Course.where(current: true, published: true)
+      @current_courses = Course.where(current: true, published: true).includes(course_registrations: :student)
     end
   end
 end
