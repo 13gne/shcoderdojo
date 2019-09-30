@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 ruby "2.3.5"
+
+gem "blazer"
 gem "bootstrap-sass"
 gem "coffee-rails", "~> 4.1.0"
 gem "devise", ">= 4.2"
