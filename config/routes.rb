@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   authenticate :user, ->(user) { user.admin? } do
-    mount Blazer::Engine, at: "blazer"
+    mount Blazer::Engine, at: "admin/blazer"
   end
 
   namespace :admin do
